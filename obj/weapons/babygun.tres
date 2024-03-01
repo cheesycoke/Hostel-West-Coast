@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://dwrwtwd8ppep2"]
+
+[ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_8yjds"]
+
+[resource]
+script = ExtResource("1_8yjds")
+Name = "Babygun"
+Auto = true
+BulletsFired = 2
+ReloadTime = 0.1
+RandomSpread = 10.0
+AmmoType = 0
+FanWidth = 10
+AmmoUse = 2

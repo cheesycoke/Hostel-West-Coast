@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b801qldvlvsoe"]
+
+[ext_resource type="Script" path="res://obj/gunray.gd" id="1_2itdr"]
+
+[node name="GunRay" type="RayCast3D"]
+target_position = Vector3(-5000, 0, 0)
+collision_mask = 2
+script = ExtResource("1_2itdr")

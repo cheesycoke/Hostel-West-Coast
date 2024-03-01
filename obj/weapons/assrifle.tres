@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://bw1m6l03mm2mh"]
+
+[ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_dyg88"]
+
+[resource]
+script = ExtResource("1_dyg88")
+Name = "Ass. Rifle"
+Auto = true
+BulletsFired = 1
+ReloadTime = 0.2
+RandomSpread = 3.0
+AmmoType = 0
+FanWidth = 60
+AmmoUse = 1

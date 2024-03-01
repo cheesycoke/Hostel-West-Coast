@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://obrqo2w28tcs"]
+
+[ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_r7ay7"]
+
+[resource]
+script = ExtResource("1_r7ay7")
+Name = "Shotgun"
+Auto = false
+BulletsFired = 5
+ReloadTime = 0.8
+RandomSpread = 8.0
+AmmoType = 1
+FanWidth = 60
+AmmoUse = 1

@@ -1,3 +1,13 @@
 res://scn/test.tscn
-res://obj/player.gd
 res://obj/player.tscn
+res://obj/gun_manager.tscn
+res://obj/player.gd
+res://obj/CamShaker.gd
+res://obj/GunManager.gd
+res://obj/gunray.tscn
+res://obj/weapons/baseWeapon.gd
+res://obj/weapons/shotgun.tres
+res://obj/gunray.gd
+res://obj/weapons/pistol.tres
+res://obj/weapons/assrifle.tres
+res://obj/weapons/babygun.tres
