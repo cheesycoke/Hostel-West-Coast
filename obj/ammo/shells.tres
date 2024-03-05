@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AmmoRes" load_steps=2 format=3 uid="uid://d34eow5ig881a"]
+
+[ext_resource type="Script" path="res://obj/ammo/baseAmmo.gd" id="1_ricpy"]
+
+[resource]
+script = ExtResource("1_ricpy")
+AmmoName = "Shells"
+MaxAmmo = 40

@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://hpu6hlsloobx"]
+
+[ext_resource type="Texture2D" uid="uid://mjtdu8rud7ou" path="res://gfx/guns/gunTex.png" id="1_7lt1y"]
+
+[resource]
+albedo_texture = ExtResource("1_7lt1y")
+emission = Color(1, 1, 0.764706, 1)
+emission_energy_multiplier = 0.1
+normal_scale = -0.98
+normal_texture = ExtResource("1_7lt1y")
+texture_filter = 0

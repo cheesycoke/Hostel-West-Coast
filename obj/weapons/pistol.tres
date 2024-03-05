@@ -1,6 +1,8 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://djvnuetl7hynd"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://djvnuetl7hynd"]
 
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_65mma"]
+[ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="1_120w8"]
+[ext_resource type="PackedScene" uid="uid://dyhrqdf4g3l5" path="res://gfx/guns/pistol/pistol.tscn" id="2_7i2s7"]
 
 [resource]
 script = ExtResource("1_65mma")
@@ -9,6 +11,7 @@ Auto = true
 BulletsFired = 1
 ReloadTime = 0.5
 RandomSpread = 0.0
-AmmoType = 0
+AmmoType = ExtResource("1_120w8")
 FanWidth = 60
 AmmoUse = 1
+Model = ExtResource("2_7i2s7")

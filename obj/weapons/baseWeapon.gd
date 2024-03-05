@@ -8,7 +8,7 @@ class_name Weapon
 @export var BulletsFired: int = 1
 @export var ReloadTime: float = 1.0
 @export var RandomSpread: float = 0.0
-@export var AmmoType: AmmoRes.types
+@export var AmmoType: AmmoRes
 @export var AmmoObj: PackedScene
 @export var FanWidth: int = 60
 @export var AmmoUse: int = 1

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cingo37uq1ms2"]
+
+[ext_resource type="PackedScene" uid="uid://b76cpdf0i57fl" path="res://gfx/models/player/fist.dae" id="1_ombq6"]
+[ext_resource type="Texture2D" uid="uid://cas04lf7mlrx" path="res://gfx/models/player/fist.png" id="2_yl3es"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e284t"]
+albedo_texture = ExtResource("2_yl3es")
+metallic_specular = 0.0
+normal_scale = 1.36
+normal_texture = ExtResource("2_yl3es")
+rim_tint = 0.0
+anisotropy = 0.09
+heightmap_scale = 11.831
+heightmap_texture = ExtResource("2_yl3es")
+subsurf_scatter_strength = 0.3
+subsurf_scatter_skin_mode = true
+texture_filter = 0
+
+[node name="fist" instance=ExtResource("1_ombq6")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_e284t")

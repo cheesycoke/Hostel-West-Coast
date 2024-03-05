@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=2 format=3 uid="uid://obrqo2w28tcs"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://obrqo2w28tcs"]
 
+[ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="1_fn7is"]
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_r7ay7"]
 
 [resource]
@@ -9,6 +10,6 @@ Auto = false
 BulletsFired = 5
 ReloadTime = 0.8
 RandomSpread = 8.0
-AmmoType = 1
-FanWidth = 60
+AmmoType = ExtResource("1_fn7is")
+FanWidth = 40
 AmmoUse = 1

@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://gg4mv0uusslx"
-path="res://.godot/imported/MomsTypewriter.ttf-d20cefcdf4df14a194b79916182f7999.fontdata"
+uid="uid://dugqf6qatxbyq"
+path="res://.godot/imported/junkos typewriter.ttf-1142b474827ee2d9e16bcf5a8c838f07.fontdata"
 
 [deps]
 
-source_file="res://gfx/font/MomsTypewriter.ttf"
-dest_files=["res://.godot/imported/MomsTypewriter.ttf-d20cefcdf4df14a194b79916182f7999.fontdata"]
+source_file="res://gfx/font/junkos typewriter.ttf"
+dest_files=["res://.godot/imported/junkos typewriter.ttf-1142b474827ee2d9e16bcf5a8c838f07.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=1
+antialiasing=0
 generate_mipmaps=false
 multichannel_signed_distance_field=false
 msdf_pixel_range=8

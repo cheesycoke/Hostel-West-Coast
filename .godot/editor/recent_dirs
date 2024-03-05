@@ -1,3 +1,11 @@
+res://gfx/guns
+res://gfx/guns/pistol
+res://obj/ent
+res://obj/ammo
+res://obj/enemy
+res://obj/sys
+res://scn
+res://gfx/models/player
+res://gfx/ui
 res://obj
 res://obj/weapons
-res://scn

@@ -1,10 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cclex5c3wrjen"]
+[gd_scene load_steps=5 format=3 uid="uid://cclex5c3wrjen"]
 
 [ext_resource type="Script" path="res://obj/GunManager.gd" id="1_ddkr5"]
+[ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="2_8p1w4"]
 [ext_resource type="PackedScene" uid="uid://b4x4545sokjpj" path="res://gfx/guns/dummy/dummygun.dae" id="2_kbige"]
+[ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="3_34681"]
 
 [node name="GunManager" type="Node3D"]
 script = ExtResource("1_ddkr5")
+Ammos = Array[Resource("res://obj/ammo/baseAmmo.gd")]([ExtResource("2_8p1w4"), ExtResource("3_34681")])
 
 [node name="FireSound" type="AudioStreamPlayer" parent="."]
 
@@ -13,6 +16,6 @@ wait_time = 0.001
 one_shot = true
 
 [node name="MeshPos" type="Node3D" parent="."]
-transform = Transform3D(1.50996e-08, 0, 0.2, 0, 0.2, 0, -0.2, 0, 1.50996e-08, 0.3, 0, 0)
+transform = Transform3D(1.50996e-08, 0, 0.18, 0, 0.2, 0, -0.2, 0, 1.35896e-08, 0.4, 0, 0.5)
 
 [node name="dummygun" parent="MeshPos" instance=ExtResource("2_kbige")]

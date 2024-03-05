@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="AmmoRes" load_steps=2 format=3 uid="uid://c8bd32a3lscoh"]
+
+[ext_resource type="Script" path="res://obj/ammo/baseAmmo.gd" id="1_fem84"]
+
+[resource]
+script = ExtResource("1_fem84")
+AmmoName = "Bullets"
+MaxAmmo = 100

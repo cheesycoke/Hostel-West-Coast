@@ -1,2 +1,3 @@
+AmmoRes
 Weapon
 Resource

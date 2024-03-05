@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvcpwx703fwph"]
+
+[ext_resource type="Script" path="res://obj/ent/ammo_pickup.gd" id="1_cxcn3"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n4ceq"]
+radius = 2.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q77sn"]
+albedo_color = Color(0.941176, 0.572549, 0.141176, 1)
+emission_enabled = true
+emission = Color(0.72549, 0.509804, 0.121569, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vr7oi"]
+material = SubResource("StandardMaterial3D_q77sn")
+size = Vector3(0.75, 0.5, 0.5)
+
+[node name="AmmoPickup" type="Area3D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_cxcn3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_n4ceq")
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("BoxMesh_vr7oi")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

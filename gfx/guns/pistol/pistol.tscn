@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyhrqdf4g3l5"]
+
+[ext_resource type="PackedScene" uid="uid://bsx5andxf4xwc" path="res://gfx/guns/pistol/pistol.dae" id="1_nsgfr"]
+[ext_resource type="Material" uid="uid://hpu6hlsloobx" path="res://gfx/guns/GunMat.tres" id="2_brgww"]
+
+[sub_resource type="Animation" id="Animation_r3jf8"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_xbiy5"]
+resource_name = "fire"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vbngc"]
+_data = {
+"RESET": SubResource("Animation_r3jf8"),
+"fire": SubResource("Animation_xbiy5")
+}
+
+[node name="pistol" instance=ExtResource("1_nsgfr")]
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0, 0, 1)
+
+[node name="Cube_001" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_brgww")
+
+[node name="AnimationPlayer" parent="." index="1"]
+libraries = {
+"": SubResource("AnimationLibrary_vbngc")
+}

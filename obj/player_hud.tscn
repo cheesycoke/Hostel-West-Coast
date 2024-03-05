@@ -1,7 +1,166 @@
-[gd_scene format=3 uid="uid://veta8uxb1o2r"]
+[gd_scene load_steps=15 format=3 uid="uid://veta8uxb1o2r"]
+
+[ext_resource type="FontFile" uid="uid://bc3hjc3jxmrmj" path="res://gfx/font/HopeGold.otf" id="1_he0xc"]
+[ext_resource type="Script" path="res://obj/player_hud.gd" id="1_rfuw2"]
+[ext_resource type="Texture2D" uid="uid://ccg2uvqtsgp4d" path="res://gfx/ui/heart.png" id="2_ioyqm"]
+[ext_resource type="Texture2D" uid="uid://cyi6xymskkgq8" path="res://gfx/ui/crosshair.png" id="3_85amv"]
+[ext_resource type="Texture2D" uid="uid://b5isgmiygxtmh" path="res://gfx/ui/hpback.png" id="3_ld65y"]
+[ext_resource type="Texture2D" uid="uid://bvxttr5le1cke" path="res://gfx/ui/hpbar.png" id="4_wmkn5"]
+[ext_resource type="FontFile" uid="uid://dugqf6qatxbyq" path="res://gfx/font/junkos typewriter.ttf" id="6_eqrg7"]
+[ext_resource type="Script" path="res://obj/Debug.gd" id="8_w0kj3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_po1o5"]
+font = ExtResource("6_eqrg7")
+font_size = 96
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 32
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(-2.995, -2.43)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfb6t"]
+atlas = ExtResource("2_ioyqm")
+region = Rect2(0, 0, 173, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs4wn"]
+atlas = ExtResource("2_ioyqm")
+region = Rect2(173, 0, 173, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpn84"]
+atlas = ExtResource("2_ioyqm")
+region = Rect2(346, 0, 173, 224)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1bbd"]
+atlas = ExtResource("2_ioyqm")
+region = Rect2(519, 0, 173, 224)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2ssa8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfb6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs4wn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hpn84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1bbd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [node name="PlayerHUD" type="Control"]
+texture_filter = 1
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_rfuw2")
+
+[node name="Crosshair" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Crosshair"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_he0xc")
+theme_override_font_sizes/font_size = 66
+text = "[ - ]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -106.0
+offset_top = -55.0
+offset_right = 122.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.4, 0.4)
+pivot_offset = Vector2(106.037, 54.578)
+texture = ExtResource("3_85amv")
+
+[node name="Health" type="Control" parent="."]
+layout_mode = 1
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+
+[node name="HPBar" type="TextureProgressBar" parent="Health"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 208.0
+offset_top = 64.0
+offset_right = 784.0
+offset_bottom = 201.0
+rotation = -0.0709468
+size_flags_horizontal = 0
+size_flags_vertical = 0
+value = 100.0
+texture_under = ExtResource("3_ld65y")
+texture_progress = ExtResource("4_wmkn5")
+texture_progress_offset = Vector2(78, 0)
+tint_under = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[node name="HPText" type="Label" parent="Health"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 224.0
+offset_top = 160.0
+offset_right = 496.0
+offset_bottom = 279.0
+text = "10/10"
+label_settings = SubResource("LabelSettings_po1o5")
+
+[node name="MYBEATINGHEART" type="AnimatedSprite2D" parent="Health"]
+texture_filter = 1
+position = Vector2(160, 128)
+scale = Vector2(2.01156, 1.67279)
+sprite_frames = SubResource("SpriteFrames_2ssa8")
+frame_progress = 0.476447
+flip_h = true
+
+[node name="Debug" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+script = ExtResource("8_w0kj3")
+
+[node name="DebugText" type="Label" parent="Debug"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = -1080.0
+offset_right = 568.0
+offset_bottom = -16.0
+text = "aaa"
+vertical_alignment = 2
