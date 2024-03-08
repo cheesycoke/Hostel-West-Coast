@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://veta8uxb1o2r"]
+[gd_scene load_steps=33 format=3 uid="uid://veta8uxb1o2r"]
 
 [ext_resource type="FontFile" uid="uid://bc3hjc3jxmrmj" path="res://gfx/font/HopeGold.otf" id="1_he0xc"]
 [ext_resource type="Script" path="res://obj/player_hud.gd" id="1_rfuw2"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://bvxttr5le1cke" path="res://gfx/ui/hpbar.png" id="4_wmkn5"]
 [ext_resource type="FontFile" uid="uid://dugqf6qatxbyq" path="res://gfx/font/junkos typewriter.ttf" id="6_eqrg7"]
 [ext_resource type="Script" path="res://obj/Debug.gd" id="8_w0kj3"]
+[ext_resource type="Texture2D" uid="uid://b3gaciitgnkd1" path="res://gfx/ui/thought.png" id="9_5hc5l"]
+[ext_resource type="Texture2D" uid="uid://bk58nacamedt1" path="res://gfx/ui/seerCorner.png" id="9_h7m3o"]
+[ext_resource type="Script" path="res://obj/Seer.gd" id="10_3uhf7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_po1o5"]
 font = ExtResource("6_eqrg7")
@@ -51,6 +54,121 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 3.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbnt"]
+atlas = ExtResource("9_5hc5l")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_188l2"]
+atlas = ExtResource("9_5hc5l")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbkkw"]
+atlas = ExtResource("9_5hc5l")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vdyxf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_188l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbkkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pt3br"]
+font = ExtResource("6_eqrg7")
+font_size = 96
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrde0"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfgio"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e51kv"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ob8dp"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(1536, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_500bj"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(1792, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5lkl"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(2048, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05xju"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh1oi"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(1024, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm1io"]
+atlas = ExtResource("9_h7m3o")
+region = Rect2(1280, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xex55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrde0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfgio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e51kv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ob8dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_500bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5lkl")
+}],
+"loop": true,
+"name": &"hehe",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05xju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh1oi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm1io")
+}],
+"loop": true,
+"name": &"thumbsup",
+"speed": 5.0
 }]
 
 [node name="PlayerHUD" type="Control"]
@@ -149,6 +267,7 @@ frame_progress = 0.476447
 flip_h = true
 
 [node name="Debug" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -164,3 +283,42 @@ offset_right = 568.0
 offset_bottom = -16.0
 text = "aaa"
 vertical_alignment = 2
+
+[node name="BottomLeft" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -400.0
+offset_right = 736.0
+grow_vertical = 0
+
+[node name="Thought" type="AnimatedSprite2D" parent="BottomLeft"]
+position = Vector2(184, 72)
+scale = Vector2(1.34375, 1.01563)
+sprite_frames = SubResource("SpriteFrames_vdyxf")
+frame_progress = 0.668639
+
+[node name="Ammo" type="Label" parent="BottomLeft/Thought"]
+offset_left = -125.023
+offset_top = -102.4
+offset_right = 136.977
+offset_bottom = 31.6
+rotation = 0.0903488
+text = "100"
+label_settings = SubResource("LabelSettings_pt3br")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seer" type="AnimatedSprite2D" parent="BottomLeft"]
+position = Vector2(168, 240)
+scale = Vector2(1.3125, 1.25)
+sprite_frames = SubResource("SpriteFrames_xex55")
+animation = &"hehe"
+frame_progress = 0.870798
+script = ExtResource("10_3uhf7")
+
+[node name="animtimer" type="Timer" parent="BottomLeft/Seer"]
+one_shot = true
+
+[connection signal="timeout" from="BottomLeft/Seer/animtimer" to="BottomLeft/Seer" method="_on_animtimer_timeout"]

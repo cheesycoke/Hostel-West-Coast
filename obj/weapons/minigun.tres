@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dqm86oyqxvi0i"]
+
+[ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="1_emkm1"]
+[ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="3_3y3by"]
+
+[resource]
+script = ExtResource("3_3y3by")
+Name = "Minigun"
+Auto = true
+BulletsFired = 3
+ReloadTime = 0.08
+RandomSpread = 12.0
+AmmoType = ExtResource("1_emkm1")
+FanWidth = 10
+AmmoUse = 2
+Damage = 2

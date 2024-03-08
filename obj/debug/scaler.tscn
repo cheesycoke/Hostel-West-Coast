@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://50or0fsictjc"]
+
+[ext_resource type="Script" path="res://Scaler.gd" id="1_y7tid"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_osqeb"]
+
+[node name="Scaler" type="Node3D"]
+script = ExtResource("1_y7tid")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_osqeb")

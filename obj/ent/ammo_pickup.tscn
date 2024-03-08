@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvcpwx703fwph"]
+[gd_scene load_steps=8 format=3 uid="uid://dvcpwx703fwph"]
 
 [ext_resource type="Script" path="res://obj/ent/ammo_pickup.gd" id="1_cxcn3"]
 
@@ -14,6 +14,68 @@ emission = Color(0.72549, 0.509804, 0.121569, 1)
 material = SubResource("StandardMaterial3D_q77sn")
 size = Vector3(0.75, 0.5, 0.5)
 
+[sub_resource type="Animation" id="Animation_w0v8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jsdg1"]
+resource_name = "hop"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1, 1.6, 1.7, 1.9, 1.95),
+"transitions": PackedFloat32Array(0.287175, 1, 0.170755, 3.36358, 0.15932, 0.353553, 0.435275, 2),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.3, 0.7, 1.3), Vector3(1.3, 0.7, 1.3), Vector3(0.7, 1.3, 0.7), Vector3(1, 1, 1), Vector3(1.2, 0.8, 1.2), Vector3(0.95, 1.05, 0.95), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 1.2, 1.6),
+"transitions": PackedFloat32Array(4.75683, 1, 0.170755, 3.73213, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o3smx"]
+_data = {
+"RESET": SubResource("Animation_w0v8v"),
+"hop": SubResource("Animation_jsdg1")
+}
+
 [node name="AmmoPickup" type="Area3D"]
 collision_layer = 0
 collision_mask = 16
@@ -28,4 +90,12 @@ shape = SubResource("SphereShape3D_n4ceq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 mesh = SubResource("BoxMesh_vr7oi")
 
+[node name="anim" type="AnimationPlayer" parent="Mesh"]
+libraries = {
+"": SubResource("AnimationLibrary_o3smx")
+}
+
+[node name="jump" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="jump" to="." method="_on_jump_timeout"]

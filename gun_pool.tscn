@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c724dga3qvwfu"]
+
+[ext_resource type="Script" path="res://gun_pool.gd" id="1_lcrqm"]
+
+[node name="GunPool" type="Node"]
+script = ExtResource("1_lcrqm")

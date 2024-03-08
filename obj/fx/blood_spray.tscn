@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://dv6l21hngb1mh"]
+
+[ext_resource type="Script" path="res://obj/fx/blood_spray.gd" id="1_o6jp8"]
+
+[sub_resource type="Curve" id="Curve_cp205"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.56133, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_11n2a"]
+width = 64
+curve = SubResource("Curve_cp205")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d8712"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -180.0
+angle_max = 180.0
+spread = 180.0
+initial_velocity_min = 4.0
+initial_velocity_max = 12.0
+gravity = Vector3(0, -20, 0)
+linear_accel_min = -10.0
+linear_accel_max = -1.0
+scale_min = 0.5
+scale_max = 2.5
+scale_curve = SubResource("CurveTexture_11n2a")
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eleq4"]
+albedo_color = Color(0.678431, 0, 0, 1)
+roughness = 0.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_yddom"]
+material = SubResource("StandardMaterial3D_eleq4")
+radius = 0.14
+height = 0.16
+radial_segments = 4
+rings = 1
+
+[node name="BloodSpray" type="GPUParticles3D"]
+emitting = false
+amount = 20
+lifetime = 1.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.24
+fixed_fps = 12
+process_material = SubResource("ParticleProcessMaterial_d8712")
+draw_pass_1 = SubResource("SphereMesh_yddom")
+script = ExtResource("1_o6jp8")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

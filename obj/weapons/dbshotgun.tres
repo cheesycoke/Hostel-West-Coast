@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://bq7h7do6eyvwl"]
+
+[ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="1_ltodh"]
+[ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="2_eo3by"]
+
+[resource]
+script = ExtResource("2_eo3by")
+Name = "DB Shotgun"
+Auto = false
+BulletsFired = 8
+ReloadTime = 0.8
+RandomSpread = 6.0
+AmmoType = ExtResource("1_ltodh")
+FanWidth = 26
+AmmoUse = 2
+Damage = 2

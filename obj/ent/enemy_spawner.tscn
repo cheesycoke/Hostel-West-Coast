@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bjglo8snhme01"]
+
+[ext_resource type="Script" path="res://EnemySpawner.gd" id="1_ghvn7"]
+[ext_resource type="Script" path="res://obj/ent/EDITORSHIT.gd" id="2_ceby2"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_dlaf3"]
+radius = 0.25
+height = 0.6
+radial_segments = 8
+rings = 4
+
+[node name="EnemySpawner" type="Node3D"]
+script = ExtResource("1_ghvn7")
+
+[node name="EDITORSHIT" type="Node3D" parent="."]
+script = ExtResource("2_ceby2")
+
+[node name="Label3D" type="Label3D" parent="EDITORSHIT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+billboard = 1
+text = "NO ENEMY"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EDITORSHIT"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("SphereMesh_dlaf3")

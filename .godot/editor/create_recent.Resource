@@ -1,3 +1,4 @@
+GunList
+Resource
 AmmoRes
 Weapon
-Resource

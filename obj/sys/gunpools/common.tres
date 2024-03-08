@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="GunList" load_steps=5 format=3 uid="uid://bon316sfchne7"]
+
+[ext_resource type="Script" path="res://obj/sys/gunpools/GunList.gd" id="1_q0rp1"]
+[ext_resource type="Resource" uid="uid://djvnuetl7hynd" path="res://obj/weapons/pistol.tres" id="1_xdyhg"]
+[ext_resource type="Resource" uid="uid://obrqo2w28tcs" path="res://obj/weapons/shotgun.tres" id="2_ihoqv"]
+[ext_resource type="Resource" uid="uid://bw1m6l03mm2mh" path="res://obj/weapons/assrifle.tres" id="3_bvmdf"]
+
+[resource]
+script = ExtResource("1_q0rp1")
+list = Array[Resource("res://obj/weapons/baseWeapon.gd")]([ExtResource("1_xdyhg"), ExtResource("2_ihoqv"), ExtResource("3_bvmdf")])

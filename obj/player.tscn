@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cij75qnj5ea15"]
+[gd_scene load_steps=17 format=3 uid="uid://cij75qnj5ea15"]
 
 [ext_resource type="Script" path="res://obj/player.gd" id="1_tq5f6"]
 [ext_resource type="PackedScene" uid="uid://veta8uxb1o2r" path="res://obj/player_hud.tscn" id="2_ey4ki"]
@@ -7,7 +7,9 @@
 [ext_resource type="Resource" uid="uid://djvnuetl7hynd" path="res://obj/weapons/pistol.tres" id="4_6k6p0"]
 [ext_resource type="FontFile" uid="uid://dugqf6qatxbyq" path="res://gfx/font/junkos typewriter.ttf" id="6_jl4f7"]
 [ext_resource type="PackedScene" uid="uid://cingo37uq1ms2" path="res://gfx/models/player/fist.tscn" id="7_8by3u"]
+[ext_resource type="PackedScene" uid="uid://dpo4gnsocy6ow" path="res://obj/punch_box.tscn" id="8_fh2js"]
 [ext_resource type="PackedScene" uid="uid://dic14d6bcc6sl" path="res://obj/sys/health_component.tscn" id="8_pl1po"]
+[ext_resource type="PackedScene" uid="uid://c4vujef2at6r0" path="res://obj/fx/ditherer.tscn" id="10_8m4j2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a324u"]
 
@@ -157,8 +159,15 @@ libraries = {
 "": SubResource("AnimationLibrary_t7tj7")
 }
 
+[node name="PunchBox" parent="Melee" instance=ExtResource("8_fh2js")]
+collision_mask = 2
+
 [node name="Components" type="Node" parent="."]
 
 [node name="HealthComponent" parent="Components" instance=ExtResource("8_pl1po")]
+
+[node name="Ditherer" parent="." instance=ExtResource("10_8m4j2")]
+visible = false
+skeleton = NodePath("../..")
 
 [connection signal="HPchanged" from="Components/HealthComponent" to="CanvasLayer/PlayerHUD" method="_on_health_component_h_pchanged"]

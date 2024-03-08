@@ -11,5 +11,6 @@ BulletsFired = 5
 ReloadTime = 0.8
 RandomSpread = 8.0
 AmmoType = ExtResource("1_fn7is")
-FanWidth = 40
+FanWidth = 30
 AmmoUse = 1
+Damage = 2

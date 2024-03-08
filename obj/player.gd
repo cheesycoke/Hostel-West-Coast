@@ -12,6 +12,8 @@ const decel: float = 0.8
 @onready var cam = $CamShaker/Cam
 @onready var gun = $GunManager
 @onready var hp:Health = $Components/HealthComponent
+@onready var hud = $CanvasLayer/PlayerHUD
+@onready var punchbox = $Melee/PunchBox
 var focusgun = null
 
 const gravity = 200
@@ -19,6 +21,7 @@ var canpunch:bool = true
 var dead:bool = false
 
 func _ready():
+	$Ditherer.visible = true
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _physics_process(delta):
@@ -70,9 +73,11 @@ func interact():
 		return
 
 func hurt(dmg:int=2):
+	camshaker.startShakin(0.1,2)
 	hp.changeHP(-dmg)
 
 func punch():
+	punchbox.hit(global_position)
 	canpunch = false
 	$Melee/fist/punchanim.play("punch")
 	await $Melee/fist/punchanim.animation_finished

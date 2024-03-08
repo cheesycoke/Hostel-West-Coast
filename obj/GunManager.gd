@@ -12,6 +12,7 @@ const WEAPON_PICKUP = preload("res://obj/ent/weapon_pickup.tscn")
 @onready var firesound = $FireSound
 @onready var meshpos = $MeshPos
 @onready var timer = $Timer
+@onready var flash = $flash
 
 var AmmoInUse:int = 0
 
@@ -21,6 +22,9 @@ func _ready():
 	setWeapon(cur)
 
 func _process(delta):
+	if $flash.light_energy > 0:
+		$flash.light_energy -= delta*10
+		$flash.light_energy = clamp($flash.light_energy,0,1)
 	if weaponInv[cur].Auto == true:
 		if Input.is_action_pressed("fire"):
 			fire()
@@ -31,6 +35,7 @@ func _process(delta):
 		cur += 1
 		cur = wrap(cur,0,weaponInv.size())
 		setWeapon(cur)
+	player.hud.curammo = Ammos[AmmoInUse].CurAmmo
 
 func setWeapon(_wpn=1):
 	timer.start(0.0001)
@@ -44,19 +49,24 @@ func setWeapon(_wpn=1):
 
 func fire():
 	if timer.time_left <= 0 and Ammos[AmmoInUse].CurAmmo >= weaponInv[cur].AmmoUse:
+		if meshpos.get_child(0).has_method("fire"):
+			meshpos.get_child(0).fire()
+		gunflash()
 		doRays(weaponInv[cur].BulletsFired)
 		Ammos[AmmoInUse].CurAmmo -= weaponInv[cur].AmmoUse
-		camshaker.startShakin(0.3)
+		camshaker.startShakin(0.3,weaponInv[cur].BulletsFired)
 		timer.start(weaponInv[cur].ReloadTime)
 	clampAmmos()
 
 func doRays(num):
+	
 	randomize()
 	if num > 1:
 		var fanwidth = weaponInv[cur].FanWidth
 		var fanspacing = fanwidth/(num-1)
 		for i in num:
 			var newray = GUNRAY.instantiate()
+			newray.dmg = weaponInv[cur].Damage
 			newray.rotation_degrees.y = 180
 			newray.rotation_degrees.y += ((-fanwidth/2)+((i)*fanspacing))
 			newray.rotation_degrees.y += randf_range(-weaponInv[cur].RandomSpread,weaponInv[cur].RandomSpread)
@@ -75,6 +85,7 @@ func getWeapon(wpn:Weapon):
 		var dropping = weaponInv[cur]
 		weaponInv[cur] = wpn
 		dropWeapon(dropping)
+	player.hud.animateSeer("smile")
 	setWeapon()
 	clampAmmos()
 
@@ -99,7 +110,11 @@ func getAmmo(isLarge):
 	else:
 		ObtainedAmmoType.CurAmmo += int(ObtainedAmmoType.MaxAmmo/4)
 	clampAmmos()
+	player.hud.animateSeer("thumb")
 
 func clampAmmos():
 	for i in Ammos:
 		i.CurAmmo = clamp(i.CurAmmo,0,i.MaxAmmo)
+
+func gunflash():
+	$flash.light_energy = 1

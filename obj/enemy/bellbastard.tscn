@@ -1,0 +1,138 @@
+[gd_scene load_steps=21 format=3 uid="uid://du4imnvs066mt"]
+
+[ext_resource type="Script" path="res://obj/enemy/bellbastard.gd" id="1_8mbdo"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/StateMachinePlayer.gd" id="2_m0va5"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" id="3_gc8a8"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/State.gd" id="4_5oth4"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" id="5_d6fak"]
+[ext_resource type="Script" path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" id="6_rna8d"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxdv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwejl"]
+albedo_color = Color(0.392157, 0.4, 0.298039, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_33e5n"]
+material = SubResource("StandardMaterial3D_nwejl")
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0laj"]
+size = Vector3(0.17, 1.13, 0.365)
+
+[sub_resource type="Resource" id="Resource_wiyla"]
+script = ExtResource("4_5oth4")
+name = "Entry"
+metadata/graph_offset = Vector2(406, 302)
+
+[sub_resource type="Resource" id="Resource_i1vov"]
+script = ExtResource("4_5oth4")
+name = "Hurt"
+metadata/graph_offset = Vector2(866, 122)
+
+[sub_resource type="Resource" id="Resource_abl6o"]
+script = ExtResource("4_5oth4")
+name = "Idle"
+metadata/graph_offset = Vector2(866, 302)
+
+[sub_resource type="Resource" id="Resource_niru3"]
+script = ExtResource("5_d6fak")
+from = "Entry"
+to = "Idle"
+conditions = {}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_ickqj"]
+script = ExtResource("6_rna8d")
+name = "recover"
+
+[sub_resource type="Resource" id="Resource_uno3p"]
+script = ExtResource("5_d6fak")
+from = "Hurt"
+to = "Idle"
+conditions = {
+"recover": SubResource("Resource_ickqj")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_6niiy"]
+script = ExtResource("6_rna8d")
+name = "hurt"
+
+[sub_resource type="Resource" id="Resource_0mtec"]
+script = ExtResource("5_d6fak")
+from = "Idle"
+to = "Hurt"
+conditions = {
+"hurt": SubResource("Resource_6niiy")
+}
+priority = 0
+
+[sub_resource type="Resource" id="Resource_b4efi"]
+script = ExtResource("3_gc8a8")
+states = {
+"Entry": SubResource("Resource_wiyla"),
+"Hurt": SubResource("Resource_i1vov"),
+"Idle": SubResource("Resource_abl6o")
+}
+transitions = {
+"Entry": {
+"Idle": SubResource("Resource_niru3")
+},
+"Hurt": {
+"Idle": SubResource("Resource_uno3p")
+},
+"Idle": {
+"Hurt": SubResource("Resource_0mtec")
+}
+}
+name = ""
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_28owg"]
+radius = 0.6
+
+[node name="BellBastard" type="CharacterBody3D"]
+collision_layer = 3
+script = ExtResource("1_8mbdo")
+enemyname = "BellBastard"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_qxdv0")
+
+[node name="mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_33e5n")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh/MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.375)
+mesh = SubResource("BoxMesh_d0laj")
+
+[node name="StateMachinePlayer" type="Node" parent="."]
+script = ExtResource("2_m0va5")
+state_machine = SubResource("Resource_b4efi")
+
+[node name="Recover" type="Timer" parent="."]
+one_shot = true
+
+[node name="Midpoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="smackbox" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 16
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="smackbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -0.8)
+shape = SubResource("SphereShape3D_28owg")
+
+[node name="Timer" type="Timer" parent="smackbox"]
+autostart = true
+
+[connection signal="updated" from="StateMachinePlayer" to="." method="_on_state_machine_player_updated"]
+[connection signal="timeout" from="Recover" to="." method="_on_recover_timeout"]
+[connection signal="body_entered" from="smackbox" to="." method="_on_smackbox_body_entered"]
+[connection signal="timeout" from="smackbox/Timer" to="." method="_on_timer_timeout"]

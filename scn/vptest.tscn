@@ -1,14 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://brnp2oissdsfw"]
+[gd_scene load_steps=4 format=3 uid="uid://brnp2oissdsfw"]
 
-[ext_resource type="Texture2D" uid="uid://4y6mpg2rlapw" path="res://gfx/env/checkertex.png" id="1_6ac6a"]
 [ext_resource type="Shader" path="res://scn/crusty.gdshader" id="1_k1l5g"]
-[ext_resource type="PackedScene" uid="uid://cij75qnj5ea15" path="res://obj/player.tscn" id="2_3bn50"]
-[ext_resource type="PackedScene" uid="uid://dnvlu0djh6fgu" path="res://obj/ent/weapon_pickup.tscn" id="4_408tk"]
-[ext_resource type="Resource" uid="uid://bw1m6l03mm2mh" path="res://obj/weapons/assrifle.tres" id="5_3cp3b"]
-[ext_resource type="Resource" uid="uid://obrqo2w28tcs" path="res://obj/weapons/shotgun.tres" id="5_ktpnv"]
-[ext_resource type="Resource" uid="uid://dwrwtwd8ppep2" path="res://obj/weapons/babygun.tres" id="6_u88gs"]
-[ext_resource type="PackedScene" uid="uid://dmdruvmluca1i" path="res://obj/enemy/dummy_enemy.tscn" id="8_kvy3a"]
-[ext_resource type="PackedScene" uid="uid://dvcpwx703fwph" path="res://obj/ent/ammo_pickup.tscn" id="9_fapt7"]
+[ext_resource type="PackedScene" uid="uid://bqxh87m5rbnai" path="res://scn/test.tscn" id="2_wpntn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qoqjf"]
 shader = ExtResource("1_k1l5g")
@@ -16,15 +9,6 @@ shader_parameter/enabled = true
 shader_parameter/dithering = true
 shader_parameter/colors = 12
 shader_parameter/dither_size = 2
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqqdg"]
-albedo_texture = ExtResource("1_6ac6a")
-uv1_triplanar = true
-
-[sub_resource type="Environment" id="Environment_quj7e"]
-ambient_light_source = 2
-ambient_light_color = Color(0.415686, 0.0980392, 0.101961, 1)
-ambient_light_energy = 0.8
 
 [node name="SubViewportContainer" type="SubViewportContainer"]
 material = SubResource("ShaderMaterial_qoqjf")
@@ -40,43 +24,4 @@ handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="testscene" type="Node3D" parent="SubViewport"]
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="SubViewport/testscene"]
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="SubViewport/testscene/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-size = Vector3(50, 1, 50)
-material = SubResource("StandardMaterial3D_sqqdg")
-
-[node name="Player" parent="SubViewport/testscene" instance=ExtResource("2_3bn50")]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewport/testscene"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.92122, 0)
-light_color = Color(0.945098, 0.913725, 0.847059, 1)
-light_energy = 1.25
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/testscene"]
-environment = SubResource("Environment_quj7e")
-
-[node name="WeaponPickup" parent="SubViewport/testscene" instance=ExtResource("4_408tk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00539, 0, 7.00912)
-weapon = ExtResource("5_3cp3b")
-
-[node name="WeaponPickup2" parent="SubViewport/testscene" instance=ExtResource("4_408tk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231917, 0, 7.00912)
-weapon = ExtResource("6_u88gs")
-
-[node name="WeaponPickup3" parent="SubViewport/testscene" instance=ExtResource("4_408tk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35382, 0, 7.00912)
-weapon = ExtResource("5_ktpnv")
-
-[node name="WeaponPickup4" parent="SubViewport/testscene" instance=ExtResource("4_408tk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5903, 0, 7.00912)
-
-[node name="DummyEnemy" parent="SubViewport/testscene" instance=ExtResource("8_kvy3a")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.89463, 0, 1.59002)
-
-[node name="AmmoPickup" parent="SubViewport/testscene" instance=ExtResource("9_fapt7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82708, 0, -4.90798)
+[node name="testscene" parent="SubViewport" instance=ExtResource("2_wpntn")]

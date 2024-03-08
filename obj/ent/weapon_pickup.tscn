@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dnvlu0djh6fgu"]
+[gd_scene load_steps=7 format=3 uid="uid://dnvlu0djh6fgu"]
 
 [ext_resource type="Script" path="res://obj/ent/weapon_pickup.gd" id="1_4di18"]
-[ext_resource type="Resource" uid="uid://djvnuetl7hynd" path="res://obj/weapons/pistol.tres" id="2_nd4x0"]
 [ext_resource type="PackedScene" uid="uid://b4x4545sokjpj" path="res://gfx/guns/dummy/dummygun.dae" id="3_0ow2i"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qusv3"]
@@ -71,7 +70,6 @@ _data = {
 [node name="WeaponPickup" type="Area3D"]
 collision_mask = 16
 script = ExtResource("1_4di18")
-weapon = ExtResource("2_nd4x0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)

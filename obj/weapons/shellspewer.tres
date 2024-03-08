@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://bkimjh34o0tlt"]
+
+[ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="1_p2at5"]
+[ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="2_xbi33"]
+
+[resource]
+script = ExtResource("2_xbi33")
+Name = "Shell Spewer"
+Auto = true
+BulletsFired = 5
+ReloadTime = 0.2
+RandomSpread = 8.0
+AmmoType = ExtResource("1_p2at5")
+FanWidth = 20
+AmmoUse = 1
+Damage = 2

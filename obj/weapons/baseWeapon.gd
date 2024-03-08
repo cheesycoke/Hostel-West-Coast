@@ -12,6 +12,7 @@ class_name Weapon
 @export var AmmoObj: PackedScene
 @export var FanWidth: int = 60
 @export var AmmoUse: int = 1
+@export var Damage:int = 2
 
 #AudioVisual Elements
 @export var Model: PackedScene = load("res://gfx/guns/dummy/dummygun.dae")

@@ -16,6 +16,12 @@ wait_time = 0.001
 one_shot = true
 
 [node name="MeshPos" type="Node3D" parent="."]
-transform = Transform3D(1.50996e-08, 0, 0.18, 0, 0.2, 0, -0.2, 0, 1.35896e-08, 0.4, 0, 0.5)
+transform = Transform3D(1.50996e-08, 0, 0.12, 0, 0.2, 0, -0.2, 0, 9.05975e-09, 0.4, 0, 0.5)
 
 [node name="dummygun" parent="MeshPos" instance=ExtResource("2_kbige")]
+
+[node name="flash" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 1, 0.568627, 1)
+spot_angle = 82.0
+spot_angle_attenuation = 1.6245

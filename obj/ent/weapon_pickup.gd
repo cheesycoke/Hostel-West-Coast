@@ -1,16 +1,25 @@
 extends Area3D
 
 @export var weapon:Weapon
+@export var random:bool
 @onready var meshpos = $meshpos
 
 func _ready():
-	var newmesh = weapon.Model.instantiate()
-	$meshpos/DBGMESH.queue_free()
-	meshpos.add_child(newmesh)
+	if random == true:
+		weapon = GunPool.getRandomWeapon()
+		print(weapon)
+	while not weapon is Weapon:
+		await get_tree().process_frame
+	setMesh()
 	$meshpos/AnimationPlayer.play("bobspin")
 
 func _process(delta):
 	pass
+
+func setMesh():
+	var newmesh = weapon.Model.instantiate()
+	$meshpos/DBGMESH.queue_free()
+	meshpos.add_child(newmesh)
 
 func _on_body_entered(body:Player):
 	body.pickupShow(weapon.Name)
