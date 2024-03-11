@@ -22,6 +22,7 @@ func _ready():
 	setWeapon(cur)
 
 func _process(delta):
+	updateAmmoCounts()
 	if $flash.light_energy > 0:
 		$flash.light_energy -= delta*10
 		$flash.light_energy = clamp($flash.light_energy,0,1)
@@ -43,15 +44,18 @@ func setWeapon(_wpn=1):
 	for i in meshpos.get_children():
 		i.queue_free()
 	var newmesh = weaponInv[cur].Model.instantiate()
+	firesound.stream = weaponInv[cur].FireSound
 	meshpos.add_child(newmesh)
 	
 	pass
 
 func fire():
-	if timer.time_left <= 0 and Ammos[AmmoInUse].CurAmmo >= weaponInv[cur].AmmoUse:
+	if timer.time_left <= 0 and Ammos[AmmoInUse].CurAmmo >= weaponInv[cur].AmmoUse and player.dead==false:
 		if meshpos.get_child(0).has_method("fire"):
 			meshpos.get_child(0).fire()
 		gunflash()
+		firesound.pitch_scale = randf_range(0.7,1.3)
+		firesound.play()
 		doRays(weaponInv[cur].BulletsFired)
 		Ammos[AmmoInUse].CurAmmo -= weaponInv[cur].AmmoUse
 		camshaker.startShakin(0.3,weaponInv[cur].BulletsFired)
@@ -73,6 +77,7 @@ func doRays(num):
 			add_child(newray)
 	else:
 		var newray = GUNRAY.instantiate()
+		newray.dmg = weaponInv[cur].Damage
 		newray.rotation_degrees.y = 180
 		newray.rotation_degrees.y += randf_range(-weaponInv[cur].RandomSpread,weaponInv[cur].RandomSpread)
 		add_child(newray)
@@ -110,6 +115,7 @@ func getAmmo(isLarge):
 	else:
 		ObtainedAmmoType.CurAmmo += int(ObtainedAmmoType.MaxAmmo/4)
 	clampAmmos()
+	player.hud.animateAmmo(ObtainedAmmoType.AmmoName)
 	player.hud.animateSeer("thumb")
 
 func clampAmmos():
@@ -118,3 +124,8 @@ func clampAmmos():
 
 func gunflash():
 	$flash.light_energy = 1
+
+func updateAmmoCounts():
+	player.hud.bullets = Ammos[0].CurAmmo
+	player.hud.shells = Ammos[1].CurAmmo
+	#not expandable at all. lol

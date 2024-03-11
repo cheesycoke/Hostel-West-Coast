@@ -1,0 +1,111 @@
+[gd_scene load_steps=11 format=3 uid="uid://crnjkj6tb2owk"]
+
+[ext_resource type="Script" path="res://obj/rooms/baseroom.gd" id="1_m7f5b"]
+[ext_resource type="Material" uid="uid://cjxf42w0ughv8" path="res://gfx/env/mat/walls.tres" id="2_g2c3r"]
+[ext_resource type="PackedScene" uid="uid://50or0fsictjc" path="res://obj/debug/scaler.tscn" id="3_qtrt8"]
+[ext_resource type="PackedScene" uid="uid://cij75qnj5ea15" path="res://obj/player.tscn" id="4_1kc11"]
+[ext_resource type="PackedScene" uid="uid://bosixs7qftj13" path="res://obj/ent/exit.tscn" id="5_6jejk"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lh8kl"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uk70x"]
+width = 256
+height = 256
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_lh8kl")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4dmkd"]
+sky_top_color = Color(1, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_cover = SubResource("NoiseTexture2D_uk70x")
+sky_cover_modulate = Color(0.568627, 0.482353, 0.207843, 1)
+ground_bottom_color = Color(0.196078, 0.141176, 0.101961, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_curve = 0.211121
+
+[sub_resource type="Sky" id="Sky_o28ll"]
+sky_material = SubResource("ProceduralSkyMaterial_4dmkd")
+
+[sub_resource type="Environment" id="Environment_fllgo"]
+background_mode = 2
+sky = SubResource("Sky_o28ll")
+ambient_light_source = 3
+ambient_light_color = Color(0.415686, 0.0980392, 0.101961, 1)
+reflected_light_source = 2
+ssao_enabled = true
+ssao_radius = 0.85
+ssao_intensity = 16.0
+ssao_power = 23.1826
+ssao_detail = 0.0
+ssao_horizon = 0.83
+ssao_sharpness = 1.0
+ssao_light_affect = 1.0
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.1273
+fog_aerial_perspective = 1.0
+adjustment_contrast = 8.0
+
+[node name="baseroom" type="Node3D"]
+script = ExtResource("1_m7f5b")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -9)
+use_collision = true
+collision_layer = 37
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+size = Vector3(14, 1, 18)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+size = Vector3(14, 1, 18)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 1.5, 0)
+size = Vector3(1, 5, 16)
+material = ExtResource("2_g2c3r")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 1.5, 0)
+size = Vector3(1, 5, 16)
+material = ExtResource("2_g2c3r")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8.5)
+size = Vector3(14, 5, 1)
+material = ExtResource("2_g2c3r")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.5)
+size = Vector3(14, 5, 1)
+material = ExtResource("2_g2c3r")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8.5)
+operation = 2
+size = Vector3(2, 3, 1)
+
+[node name="Scaler" parent="." instance=ExtResource("3_qtrt8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9, -9)
+light_color = Color(1, 1, 0.886275, 1)
+omni_range = 20.0
+omni_attenuation = 0.25
+
+[node name="Player" parent="." instance=ExtResource("4_1kc11")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34902, 1.07288e-06, -5.4321)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fllgo")
+
+[node name="Exit" parent="." instance=ExtResource("5_6jejk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -9)
+
+[node name="Exit2" parent="." instance=ExtResource("5_6jejk")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -17)

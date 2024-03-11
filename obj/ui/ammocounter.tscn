@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://qew3ef1rctj4"]
+
+[ext_resource type="Texture2D" uid="uid://dy0v1bvti484k" path="res://gfx/ui/ammoicons/bullet.png" id="1_5daux"]
+[ext_resource type="Script" path="res://obj/ui/ammocounter.gd" id="1_5s7j5"]
+[ext_resource type="FontFile" uid="uid://bc3hjc3jxmrmj" path="res://gfx/font/HopeGold.otf" id="2_bto2s"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j6mj1"]
+font = ExtResource("2_bto2s")
+font_size = 96
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="Animation" id="Animation_dts6y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_iif5f"]
+resource_name = "get"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(0.378929, 2.92817, 0.406126, 1),
+"update": 0,
+"values": [Vector2(0.2, 4), Vector2(1.5, 0.6), Vector2(0.9, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cajgt"]
+_data = {
+"RESET": SubResource("Animation_dts6y"),
+"get": SubResource("Animation_iif5f")
+}
+
+[node name="AmmoCount" type="HBoxContainer"]
+offset_right = 320.0
+offset_bottom = 76.0
+pivot_offset = Vector2(0, 40)
+script = ExtResource("1_5s7j5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+texture = ExtResource("1_5daux")
+stretch_mode = 2
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 2
+size_flags_vertical = 1
+text = "100"
+label_settings = SubResource("LabelSettings_j6mj1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Label"]
+libraries = {
+"": SubResource("AnimationLibrary_cajgt")
+}
+speed_scale = 2.0

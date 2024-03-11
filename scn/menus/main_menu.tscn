@@ -1,0 +1,209 @@
+[gd_scene load_steps=16 format=3 uid="uid://bhsiy4hpo0cwf"]
+
+[ext_resource type="Script" path="res://scn/menus/main_menu.gd" id="1_h33eo"]
+[ext_resource type="Texture2D" uid="uid://40lveiai2voq" path="res://gfx/ui/menuBGs/hotel.png" id="2_3t83i"]
+[ext_resource type="PackedScene" uid="uid://c4vujef2at6r0" path="res://obj/fx/ditherer.tscn" id="2_sbg5p"]
+[ext_resource type="PackedScene" uid="uid://cues6qf400lul" path="res://obj/ui/mainmenu/mainmenubutton.tscn" id="4_act5y"]
+[ext_resource type="Texture2D" uid="uid://04uek6lhln4a" path="res://gfx/ui/logo.png" id="5_dpfg3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gm1th"]
+albedo_texture = ExtResource("2_3t83i")
+uv1_scale = Vector3(-0.25, -0.5, -0.25)
+uv1_triplanar = true
+uv2_triplanar_sharpness = 0.888115
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkyaq"]
+material = SubResource("StandardMaterial3D_gm1th")
+size = Vector3(8, 50, 8)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q16ov"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gwq2m"]
+width = 256
+height = 256
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_q16ov")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5pqeo"]
+sky_top_color = Color(1, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_cover = SubResource("NoiseTexture2D_gwq2m")
+sky_cover_modulate = Color(0.568627, 0.482353, 0.207843, 1)
+ground_bottom_color = Color(0.196078, 0.141176, 0.101961, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_curve = 0.211121
+
+[sub_resource type="Sky" id="Sky_q22ja"]
+sky_material = SubResource("ProceduralSkyMaterial_5pqeo")
+
+[sub_resource type="Environment" id="Environment_6370b"]
+background_mode = 2
+sky = SubResource("Sky_q22ja")
+ambient_light_source = 3
+ambient_light_color = Color(0.415686, 0.0980392, 0.101961, 1)
+reflected_light_source = 2
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.1273
+fog_aerial_perspective = 1.0
+adjustment_contrast = 8.0
+
+[sub_resource type="Animation" id="Animation_1qk34"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 32)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.785398, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ux8vm"]
+resource_name = "camera"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 10, 16), Vector3(0, -8, 16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.785398, 0), Vector3(0, 7.06858, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5ed03"]
+_data = {
+"RESET": SubResource("Animation_1qk34"),
+"camera": SubResource("Animation_ux8vm")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h33eo")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+stretch_shrink = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(960, 540)
+size_2d_override_stretch = true
+render_target_update_mode = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+mesh = SubResource("BoxMesh_dkyaq")
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
+fov = 60.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
+environment = SubResource("Environment_6370b")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 4.92122, 14)
+light_color = Color(0.960784, 0.913725, 0.8, 1)
+light_energy = 1.8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="SubViewportContainer/SubViewport"]
+libraries = {
+"": SubResource("AnimationLibrary_5ed03")
+}
+speed_scale = 0.25
+
+[node name="Ditherer" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_sbg5p")]
+layers = 2
+skeleton = NodePath("../..")
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PLAY" parent="Buttons" instance=ExtResource("4_act5y")]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 760.0
+offset_right = 1184.0
+offset_bottom = 858.0
+
+[node name="OPTIONS" parent="Buttons" instance=ExtResource("4_act5y")]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 760.0
+offset_right = 680.0
+offset_bottom = 858.0
+text = "OPTIONS"
+
+[node name="INFO" parent="Buttons" instance=ExtResource("4_act5y")]
+layout_mode = 0
+offset_left = 1240.0
+offset_top = 760.0
+offset_right = 1688.0
+offset_bottom = 858.0
+text = "INFO"
+
+[node name="QUIT" parent="Buttons" instance=ExtResource("4_act5y")]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 888.0
+offset_right = 1184.0
+offset_bottom = 986.0
+text = "QUIT
+"
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(960, 308)
+scale = Vector2(1.63333, 1.63333)
+texture = ExtResource("5_dpfg3")

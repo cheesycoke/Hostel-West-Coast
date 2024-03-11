@@ -3,6 +3,8 @@ extends Control
 @onready var seer = $BottomLeft/Seer
 @onready var ammo = $BottomLeft/Thought/Ammo
 var curammo:int = 0
+var shells:int = 0
+var bullets:int= 0
 
 func _ready():
 	heart.play("default")
@@ -11,6 +13,8 @@ func _ready():
 
 func _process(delta):
 	ammo.text = str(curammo)
+	$BottomLeft/AmmoList/curbullets.label.text = str(bullets)
+	$BottomLeft/AmmoList/curshells.label.text = str(shells)
 
 func setHealth(val,max):
 	$Health/HPBar.value = val
@@ -27,3 +31,10 @@ func animateSeer(animName:String="thumb"):
 			seer.thumbsup()
 		"smile":
 			seer.allsmiles()
+
+func animateAmmo(type):
+	match type:
+		"Bullets":
+			$BottomLeft/AmmoList/curbullets.gotten()
+		"Shells":
+			$BottomLeft/AmmoList/curshells.gotten()

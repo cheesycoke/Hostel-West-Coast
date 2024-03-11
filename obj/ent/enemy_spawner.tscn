@@ -9,7 +9,7 @@ height = 0.6
 radial_segments = 8
 rings = 4
 
-[node name="EnemySpawner" type="Node3D"]
+[node name="EnemySpawner" type="Node3D" groups=["enemyspawner"]]
 script = ExtResource("1_ghvn7")
 
 [node name="EDITORSHIT" type="Node3D" parent="."]

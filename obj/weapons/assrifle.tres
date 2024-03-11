@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://bw1m6l03mm2mh"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://bw1m6l03mm2mh"]
 
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_dyg88"]
 [ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="1_spppb"]
+[ext_resource type="PackedScene" uid="uid://jk8oac2pmn2e" path="res://gfx/guns/assaultrifle/assaultrifle.tscn" id="2_o4ymd"]
 
 [resource]
 script = ExtResource("1_dyg88")
@@ -13,3 +14,5 @@ RandomSpread = 3.0
 AmmoType = ExtResource("1_spppb")
 FanWidth = 60
 AmmoUse = 1
+Damage = 2
+Model = ExtResource("2_o4ymd")

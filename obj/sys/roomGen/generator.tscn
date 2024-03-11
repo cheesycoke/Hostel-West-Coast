@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bycud44a7gwfp"]
+
+[ext_resource type="MeshLibrary" uid="uid://x1agi1404gmm" path="res://obj/sys/roomGen/thetiles.tres" id="1_0fho8"]
+
+[node name="Generator" type="Node3D"]
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("1_0fho8")
+cell_size = Vector3(1, 1, 1)
+cell_center_y = false

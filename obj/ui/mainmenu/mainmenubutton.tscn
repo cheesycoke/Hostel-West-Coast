@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://cues6qf400lul"]
+
+[ext_resource type="FontFile" uid="uid://dxt52v0stfdxp" path="res://gfx/font/veteran typewriter.ttf" id="1_hbqbx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fg6q"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 6
+border_width_top = 3
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(1, 1, 1, 1)
+
+[node name="Button" type="Button"]
+offset_left = -224.0
+offset_top = -48.0
+offset_right = 224.0
+offset_bottom = 50.0
+theme_override_fonts/font = ExtResource("1_hbqbx")
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_8fg6q")
+text = "PLAY"

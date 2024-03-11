@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqit8013v73wh"]
+
+[ext_resource type="PackedScene" uid="uid://crnjkj6tb2owk" path="res://obj/rooms/baseroom2.tscn" id="1_qjosj"]
+
+[node name="RoomGenTest" type="Node3D"]
+
+[node name="baseroom" parent="." instance=ExtResource("1_qjosj")]

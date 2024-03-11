@@ -24,6 +24,7 @@ func rollSize():
 func _on_body_entered(body):
 	if body.gun.has_method("getAmmo"):
 		body.gun.getAmmo(Large)
+		call_deferred("queue_free")
 
 func _on_jump_timeout():
 	$Mesh/anim.play("hop")

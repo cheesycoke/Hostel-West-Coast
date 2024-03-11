@@ -13,11 +13,13 @@ config_version=5
 config/name="Hostel West Coast"
 run/main_scene="res://scn/test.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/image="res://gfx/ui/intro/intro.png"
 config/icon="res://icon.svg"
 
 [autoload]
 
 GunPool="*res://gun_pool.gd"
+GameLogic="*res://game_logic.tscn"
 
 [display]
 
@@ -95,11 +97,11 @@ use={
 3d_physics/layer_2="Enemies"
 3d_physics/layer_3="walls"
 3d_physics/layer_5="Player"
+3d_physics/layer_6="door"
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/decals/filter=0
 textures/light_projectors/filter=0

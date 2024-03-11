@@ -11,9 +11,11 @@ gradient = SubResource("Gradient_1idx6")
 width = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgmou"]
-shading_mode = 0
 albedo_color = Color(1, 0.815686, 0.172549, 1)
 albedo_texture = SubResource("GradientTexture1D_nl817")
+emission_enabled = true
+emission = Color(1, 1, 0, 1)
+emission_energy_multiplier = 2.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_x1o2c"]
 material = SubResource("StandardMaterial3D_mgmou")

@@ -10,6 +10,8 @@ script = ExtResource("1_ddkr5")
 Ammos = Array[Resource("res://obj/ammo/baseAmmo.gd")]([ExtResource("2_8p1w4"), ExtResource("3_34681")])
 
 [node name="FireSound" type="AudioStreamPlayer" parent="."]
+volume_db = -6.0
+bus = &"SFX"
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.001

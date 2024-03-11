@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://obrqo2w28tcs"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://obrqo2w28tcs"]
 
 [ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="1_fn7is"]
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_r7ay7"]
+[ext_resource type="AudioStream" uid="uid://bs1r5rvjjfvo0" path="res://audio/sfx/boomclickclack.wav" id="2_ea2vx"]
+[ext_resource type="PackedScene" uid="uid://c4ximq4odeubh" path="res://gfx/guns/shotgun/shotgun.tscn" id="3_5qe4f"]
 
 [resource]
 script = ExtResource("1_r7ay7")
@@ -14,3 +16,5 @@ AmmoType = ExtResource("1_fn7is")
 FanWidth = 30
 AmmoUse = 1
 Damage = 2
+Model = ExtResource("3_5qe4f")
+FireSound = ExtResource("2_ea2vx")

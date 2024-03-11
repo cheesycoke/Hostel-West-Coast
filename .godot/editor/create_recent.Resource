@@ -1,4 +1,4 @@
+Weapon
 GunList
 Resource
 AmmoRes
-Weapon

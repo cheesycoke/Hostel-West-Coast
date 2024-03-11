@@ -7,7 +7,6 @@ extends Area3D
 func _ready():
 	if random == true:
 		weapon = GunPool.getRandomWeapon()
-		print(weapon)
 	while not weapon is Weapon:
 		await get_tree().process_frame
 	setMesh()

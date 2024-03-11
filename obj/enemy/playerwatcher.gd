@@ -21,6 +21,5 @@ func track():
 
 func _on_body_entered(body):
 	if body is Player:
-		print("hi player!")
 		player = body
 		

@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4ximq4odeubh"]
+
+[ext_resource type="PackedScene" uid="uid://cf4pymwl3i0ww" path="res://gfx/guns/shotgun/shotgun.glb" id="1_cifew"]
+[ext_resource type="Script" path="res://gfx/guns/pistol/gunMDL.gd" id="2_05yis"]
+[ext_resource type="Material" uid="uid://hpu6hlsloobx" path="res://gfx/guns/GunMat.tres" id="3_2gous"]
+
+[node name="shotgun" instance=ExtResource("1_cifew")]
+script = ExtResource("2_05yis")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0.136179, 1.18099e-07, 1.62338e-08, 0.990684)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_2gous")

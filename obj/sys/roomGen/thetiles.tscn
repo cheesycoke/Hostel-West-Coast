@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqhy8hka8qdl0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_pm7nl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a4ed"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m8pun"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v3jh2"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yw450"]
+albedo_color = Color(1, 0, 1, 1)
+
+[node name="thetiles" type="Node3D"]
+
+[node name="roomtile" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pm7nl")
+surface_material_override/0 = SubResource("StandardMaterial3D_2a4ed")
+
+[node name="hallway" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pm7nl")
+surface_material_override/0 = SubResource("StandardMaterial3D_m8pun")
+
+[node name="door" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pm7nl")
+surface_material_override/0 = SubResource("StandardMaterial3D_v3jh2")
+
+[node name="border" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_pm7nl")
+surface_material_override/0 = SubResource("StandardMaterial3D_yw450")

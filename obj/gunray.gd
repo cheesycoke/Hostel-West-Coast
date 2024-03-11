@@ -1,5 +1,6 @@
 extends RayCast3D
 
+
 var landed:bool = false
 var dmg:int = 2
 
@@ -12,3 +13,5 @@ func _process(delta):
 		landed = true
 		if get_collider().has_method("hurt"):
 			get_collider().hurt(dmg,get_collision_point())
+		else:
+			GameLogic.bullethole(get_collision_point(),get_collision_normal())

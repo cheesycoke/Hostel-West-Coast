@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dk88ke4gaapua"]
+
+[ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="1_2fvrr"]
+[ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_bkklk"]
+
+[resource]
+script = ExtResource("1_bkklk")
+Name = "Revolver"
+Auto = false
+BulletsFired = 1
+ReloadTime = 0.7
+RandomSpread = 0.0
+AmmoType = ExtResource("1_2fvrr")
+FanWidth = 60
+AmmoUse = 1
+Damage = 6

@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="AmmoRes" load_steps=2 format=3 uid="uid://d34eow5ig881a"]
+[gd_resource type="Resource" script_class="AmmoRes" load_steps=3 format=3 uid="uid://d34eow5ig881a"]
 
+[ext_resource type="Texture2D" uid="uid://rfl3mhehovsb" path="res://gfx/ui/ammoicons/shell.png" id="1_dccj5"]
 [ext_resource type="Script" path="res://obj/ammo/baseAmmo.gd" id="1_ricpy"]
 
 [resource]
 script = ExtResource("1_ricpy")
 AmmoName = "Shells"
 MaxAmmo = 40
+Icon = ExtResource("1_dccj5")

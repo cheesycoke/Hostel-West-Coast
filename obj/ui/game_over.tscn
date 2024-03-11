@@ -1,0 +1,166 @@
+[gd_scene load_steps=10 format=3 uid="uid://dl3fxoxt3gftj"]
+
+[ext_resource type="AudioStream" uid="uid://btj660vrqn1xo" path="res://audio/sfx/ekg.ogg" id="1_t2fd2"]
+[ext_resource type="Script" path="res://obj/ui/game_over.gd" id="1_vrhjt"]
+[ext_resource type="AudioStream" uid="uid://bklt160fdudni" path="res://audio/sfx/splort_1.mp3" id="2_25hrp"]
+[ext_resource type="FontFile" uid="uid://dugqf6qatxbyq" path="res://gfx/font/junkos typewriter.ttf" id="4_c65vk"]
+[ext_resource type="Texture2D" uid="uid://dp1aag6ico4ww" path="res://gfx/ui/menuBGs/gameoverbg.png" id="4_s60mf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqyb3"]
+font = ExtResource("4_c65vk")
+font_size = 200
+
+[sub_resource type="Animation" id="Animation_ntclc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("textcontroller:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(930, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("textcontroller:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("textcontroller:skew")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1cr4d"]
+resource_name = "die"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("textcontroller:position")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(200, 320), Vector2(1000, 320), Vector2(200, 320), Vector2(1200, 320), Vector2(1200, 320), Vector2(900, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("textcontroller:scale")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0.43, 6.485), Vector2(3, 0.8), Vector2(2, 3), Vector2(4, 0.2), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("textcontroller:skew")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.479966, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nvbdy"]
+_data = {
+"RESET": SubResource("Animation_ntclc"),
+"die": SubResource("Animation_1cr4d")
+}
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vrhjt")
+
+[node name="sfx" type="Node" parent="."]
+
+[node name="ekg" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("1_t2fd2")
+volume_db = -4.0
+pitch_scale = 0.8
+
+[node name="splort" type="AudioStreamPlayer" parent="sfx"]
+stream = ExtResource("2_25hrp")
+pitch_scale = 1.5
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.784314)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.196078)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_s60mf")
+
+[node name="textcontroller" type="Node2D" parent="."]
+position = Vector2(930, 320)
+
+[node name="YOUDIED2" type="Label" parent="textcontroller"]
+modulate = Color(0, 0, 0, 1)
+offset_left = -948.0
+offset_top = -194.0
+offset_right = 972.0
+offset_bottom = 446.0
+scale = Vector2(1.035, 0.695)
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_yqyb3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="YOUDIED" type="Label" parent="textcontroller"]
+offset_left = -914.0
+offset_top = -304.0
+offset_right = 1006.0
+offset_bottom = 336.0
+text = "YOU DIED"
+label_settings = SubResource("LabelSettings_yqyb3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nvbdy")
+}
+speed_scale = 1.5

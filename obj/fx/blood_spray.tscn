@@ -13,8 +13,6 @@ curve = SubResource("Curve_cp205")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d8712"]
 emission_shape = 1
 emission_sphere_radius = 0.1
-angle_min = -180.0
-angle_max = 180.0
 spread = 180.0
 initial_velocity_min = 4.0
 initial_velocity_max = 12.0
@@ -28,6 +26,8 @@ collision_mode = 2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eleq4"]
 albedo_color = Color(0.678431, 0, 0, 1)
+metallic = 0.48
+metallic_specular = 1.0
 roughness = 0.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_yddom"]

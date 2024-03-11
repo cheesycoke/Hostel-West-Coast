@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="AmmoRes" load_steps=2 format=3 uid="uid://c8bd32a3lscoh"]
+[gd_resource type="Resource" script_class="AmmoRes" load_steps=3 format=3 uid="uid://c8bd32a3lscoh"]
 
+[ext_resource type="Texture2D" uid="uid://dy0v1bvti484k" path="res://gfx/ui/ammoicons/bullet.png" id="1_6t62b"]
 [ext_resource type="Script" path="res://obj/ammo/baseAmmo.gd" id="1_fem84"]
 
 [resource]
 script = ExtResource("1_fem84")
 AmmoName = "Bullets"
-MaxAmmo = 100
+MaxAmmo = 150
+Icon = ExtResource("1_6t62b")

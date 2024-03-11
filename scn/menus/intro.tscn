@@ -1,0 +1,66 @@
+[gd_scene load_steps=7 format=3 uid="uid://df3ue6m16uq5v"]
+
+[ext_resource type="Script" path="res://scn/menus/intro.gd" id="1_0hf51"]
+[ext_resource type="Texture2D" uid="uid://cj3erq2oso0sf" path="res://gfx/ui/intro/intro.png" id="1_v1ryx"]
+[ext_resource type="Texture2D" uid="uid://qagnkyqs05pb" path="res://gfx/ui/intro/introches.png" id="2_xojw2"]
+
+[sub_resource type="Animation" id="Animation_5pq10"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_v03c7"]
+resource_name = "intro"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Intro:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-1920, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1iwng"]
+_data = {
+"RESET": SubResource("Animation_5pq10"),
+"intro": SubResource("Animation_v03c7")
+}
+
+[node name="intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0hf51")
+
+[node name="Intro" type="Sprite2D" parent="."]
+scale = Vector2(4.5, 4.5)
+texture = ExtResource("1_v1ryx")
+offset = Vector2(213.5, 120)
+
+[node name="Introches" type="Sprite2D" parent="Intro"]
+position = Vector2(426.667, 0)
+texture = ExtResource("2_xojw2")
+offset = Vector2(213.556, 120)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1iwng")
+}

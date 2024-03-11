@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7bvdox72yjj8"]
+
+[ext_resource type="Texture2D" uid="uid://nve6o6qjel2f" path="res://gfx/env/tex/bullethole.png" id="1_fqa8f"]
+
+[node name="bhole" type="Decal" groups=["bhole"]]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+texture_albedo = ExtResource("1_fqa8f")
+cull_mask = 1048573

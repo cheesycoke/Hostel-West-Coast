@@ -16,6 +16,6 @@ class_name Weapon
 
 #AudioVisual Elements
 @export var Model: PackedScene = load("res://gfx/guns/dummy/dummygun.dae")
-@export var FireSound: AudioStream
+@export var FireSound: AudioStream = load("res://audio/sfx/gun.wav")
 
 var Ammo: int = 0

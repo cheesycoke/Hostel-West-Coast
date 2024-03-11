@@ -1,11 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqxh87m5rbnai"]
+[gd_scene load_steps=16 format=3 uid="uid://bqxh87m5rbnai"]
 
 [ext_resource type="Texture2D" uid="uid://4y6mpg2rlapw" path="res://gfx/env/checkertex.png" id="1_b4d8d"]
 [ext_resource type="PackedScene" uid="uid://cij75qnj5ea15" path="res://obj/player.tscn" id="2_btpvj"]
 [ext_resource type="PackedScene" uid="uid://dnvlu0djh6fgu" path="res://obj/ent/weapon_pickup.tscn" id="3_qe36e"]
 [ext_resource type="Resource" uid="uid://bw1m6l03mm2mh" path="res://obj/weapons/assrifle.tres" id="4_t3gni"]
 [ext_resource type="Resource" uid="uid://dwrwtwd8ppep2" path="res://obj/weapons/babygun.tres" id="5_fw2ln"]
-[ext_resource type="Resource" uid="uid://bq7h7do6eyvwl" path="res://obj/weapons/dbshotgun.tres" id="6_hdpem"]
+[ext_resource type="Resource" uid="uid://obrqo2w28tcs" path="res://obj/weapons/shotgun.tres" id="6_vsubm"]
 [ext_resource type="PackedScene" uid="uid://dvcpwx703fwph" path="res://obj/ent/ammo_pickup.tscn" id="8_ech4e"]
 [ext_resource type="PackedScene" uid="uid://du4imnvs066mt" path="res://obj/enemy/bellbastard.tscn" id="9_5v7to"]
 [ext_resource type="PackedScene" uid="uid://bjglo8snhme01" path="res://obj/ent/enemy_spawner.tscn" id="9_wryf7"]
@@ -14,10 +14,39 @@
 albedo_texture = ExtResource("1_b4d8d")
 uv1_triplanar = true
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_10c44"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rarw3"]
+width = 256
+height = 256
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_10c44")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ov1n7"]
+sky_top_color = Color(1, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_cover = SubResource("NoiseTexture2D_rarw3")
+sky_cover_modulate = Color(0.568627, 0.482353, 0.207843, 1)
+ground_bottom_color = Color(0.196078, 0.141176, 0.101961, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_curve = 0.211121
+
+[sub_resource type="Sky" id="Sky_wnnvl"]
+sky_material = SubResource("ProceduralSkyMaterial_ov1n7")
+
 [sub_resource type="Environment" id="Environment_quj7e"]
-ambient_light_source = 2
+background_mode = 2
+sky = SubResource("Sky_wnnvl")
+ambient_light_source = 3
 ambient_light_color = Color(0.415686, 0.0980392, 0.101961, 1)
-ambient_light_energy = 0.8
+reflected_light_source = 2
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.1273
+fog_aerial_perspective = 1.0
+adjustment_contrast = 8.0
 
 [node name="testscene" type="Node3D"]
 
@@ -31,8 +60,8 @@ size = Vector3(50, 1, 50)
 material = SubResource("StandardMaterial3D_sqqdg")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25, 1.35, 2.7)
-size = Vector3(0.5, 3.7, 6.4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.25403, 1.36189, 8.50181)
+size = Vector3(0.5, 3.7, 18)
 
 [node name="Player" parent="." instance=ExtResource("2_btpvj")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 2, 0, 2)
@@ -40,25 +69,25 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.92122, 0)
 light_color = Color(0.945098, 0.913725, 0.847059, 1)
-light_energy = 1.25
+light_energy = 1.8
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_quj7e")
 
 [node name="WeaponPickup" parent="." instance=ExtResource("3_qe36e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00539, 0, 7.00912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0998029, 0, 7.61979)
 weapon = ExtResource("4_t3gni")
 
 [node name="WeaponPickup2" parent="." instance=ExtResource("3_qe36e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0231917, 0, 7.00912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40736, 0.0644045, 8.37448)
 weapon = ExtResource("5_fw2ln")
 
 [node name="WeaponPickup3" parent="." instance=ExtResource("3_qe36e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.35382, 0, 7.00912)
-weapon = ExtResource("6_hdpem")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07966, 0, 8.2658)
+weapon = ExtResource("6_vsubm")
 
 [node name="WeaponPickup4" parent="." instance=ExtResource("3_qe36e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5903, 0, 7.00912)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.11199, 0, 7.42606)
 random = true
 
 [node name="AmmoPickup" parent="." instance=ExtResource("8_ech4e")]
@@ -66,4 +95,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.82708, 0, -4.90798)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("9_wryf7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 3.86789)
+enemy = ExtResource("9_5v7to")
+
+[node name="EnemySpawner2" parent="." instance=ExtResource("9_wryf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 5.75376)
+enemy = ExtResource("9_5v7to")
+
+[node name="EnemySpawner3" parent="." instance=ExtResource("9_wryf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 7.54716)
+enemy = ExtResource("9_5v7to")
+
+[node name="EnemySpawner4" parent="." instance=ExtResource("9_wryf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 9.44602)
+enemy = ExtResource("9_5v7to")
+
+[node name="EnemySpawner5" parent="." instance=ExtResource("9_wryf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 11.1437)
+enemy = ExtResource("9_5v7to")
+
+[node name="EnemySpawner6" parent="." instance=ExtResource("9_wryf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 12.561)
+enemy = ExtResource("9_5v7to")
+
+[node name="EnemySpawner7" parent="." instance=ExtResource("9_wryf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 14.0341)
 enemy = ExtResource("9_5v7to")

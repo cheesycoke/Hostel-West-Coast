@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://veta8uxb1o2r"]
+[gd_scene load_steps=36 format=3 uid="uid://veta8uxb1o2r"]
 
 [ext_resource type="FontFile" uid="uid://bc3hjc3jxmrmj" path="res://gfx/font/HopeGold.otf" id="1_he0xc"]
 [ext_resource type="Script" path="res://obj/player_hud.gd" id="1_rfuw2"]
@@ -11,6 +11,9 @@
 [ext_resource type="Texture2D" uid="uid://b3gaciitgnkd1" path="res://gfx/ui/thought.png" id="9_5hc5l"]
 [ext_resource type="Texture2D" uid="uid://bk58nacamedt1" path="res://gfx/ui/seerCorner.png" id="9_h7m3o"]
 [ext_resource type="Script" path="res://obj/Seer.gd" id="10_3uhf7"]
+[ext_resource type="PackedScene" uid="uid://qew3ef1rctj4" path="res://obj/ui/ammocounter.tscn" id="12_7cv7d"]
+[ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="13_ehbb5"]
+[ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="14_vq0w0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_po1o5"]
 font = ExtResource("6_eqrg7")
@@ -320,5 +323,22 @@ script = ExtResource("10_3uhf7")
 
 [node name="animtimer" type="Timer" parent="BottomLeft/Seer"]
 one_shot = true
+
+[node name="AmmoList" type="VBoxContainer" parent="BottomLeft"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 152.0
+offset_right = 416.0
+offset_bottom = 528.0
+scale = Vector2(0.6, 0.6)
+alignment = 2
+
+[node name="curbullets" parent="BottomLeft/AmmoList" instance=ExtResource("12_7cv7d")]
+layout_mode = 2
+ammotype = ExtResource("13_ehbb5")
+
+[node name="curshells" parent="BottomLeft/AmmoList" instance=ExtResource("12_7cv7d")]
+layout_mode = 2
+ammotype = ExtResource("14_vq0w0")
 
 [connection signal="timeout" from="BottomLeft/Seer/animtimer" to="BottomLeft/Seer" method="_on_animtimer_timeout"]

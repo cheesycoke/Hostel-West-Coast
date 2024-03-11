@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cij75qnj5ea15"]
+[gd_scene load_steps=19 format=3 uid="uid://cij75qnj5ea15"]
 
 [ext_resource type="Script" path="res://obj/player.gd" id="1_tq5f6"]
 [ext_resource type="PackedScene" uid="uid://veta8uxb1o2r" path="res://obj/player_hud.tscn" id="2_ey4ki"]
@@ -7,9 +7,11 @@
 [ext_resource type="Resource" uid="uid://djvnuetl7hynd" path="res://obj/weapons/pistol.tres" id="4_6k6p0"]
 [ext_resource type="FontFile" uid="uid://dugqf6qatxbyq" path="res://gfx/font/junkos typewriter.ttf" id="6_jl4f7"]
 [ext_resource type="PackedScene" uid="uid://cingo37uq1ms2" path="res://gfx/models/player/fist.tscn" id="7_8by3u"]
+[ext_resource type="PackedScene" uid="uid://dl3fxoxt3gftj" path="res://obj/ui/game_over.tscn" id="7_g3kbo"]
 [ext_resource type="PackedScene" uid="uid://dpo4gnsocy6ow" path="res://obj/punch_box.tscn" id="8_fh2js"]
 [ext_resource type="PackedScene" uid="uid://dic14d6bcc6sl" path="res://obj/sys/health_component.tscn" id="8_pl1po"]
 [ext_resource type="PackedScene" uid="uid://c4vujef2at6r0" path="res://obj/fx/ditherer.tscn" id="10_8m4j2"]
+[ext_resource type="AudioStream" uid="uid://gumhapkfijcj" path="res://audio/sfx/squelch.wav" id="12_c3n6a"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a324u"]
 
@@ -147,6 +149,8 @@ text = "Press USE"
 label_settings = SubResource("LabelSettings_2vdiw")
 horizontal_alignment = 1
 
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("7_g3kbo")]
+
 [node name="Melee" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
@@ -160,7 +164,7 @@ libraries = {
 }
 
 [node name="PunchBox" parent="Melee" instance=ExtResource("8_fh2js")]
-collision_mask = 2
+collision_mask = 34
 
 [node name="Components" type="Node" parent="."]
 
@@ -168,6 +172,15 @@ collision_mask = 2
 
 [node name="Ditherer" parent="." instance=ExtResource("10_8m4j2")]
 visible = false
+layers = 2
 skeleton = NodePath("../..")
 
+[node name="SFX" type="Node" parent="."]
+
+[node name="hurt" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("12_c3n6a")
+volume_db = -8.0
+pitch_scale = 1.2
+
 [connection signal="HPchanged" from="Components/HealthComponent" to="CanvasLayer/PlayerHUD" method="_on_health_component_h_pchanged"]
+[connection signal="died" from="Components/HealthComponent" to="." method="_on_health_component_died"]
