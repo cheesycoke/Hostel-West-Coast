@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://btutjes5h2f0o"]
+
+[node name="ceilingLight" type="SpotLight3D" groups=["levelEnts"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 1, 0.678431, 1)
+light_energy = 16.0
+spot_range = 4096.0
+spot_angle = 80.0

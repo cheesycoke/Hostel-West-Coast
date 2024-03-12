@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cij75qnj5ea15"]
+[gd_scene load_steps=21 format=3 uid="uid://cij75qnj5ea15"]
 
 [ext_resource type="Script" path="res://obj/player.gd" id="1_tq5f6"]
 [ext_resource type="PackedScene" uid="uid://veta8uxb1o2r" path="res://obj/player_hud.tscn" id="2_ey4ki"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://dic14d6bcc6sl" path="res://obj/sys/health_component.tscn" id="8_pl1po"]
 [ext_resource type="PackedScene" uid="uid://c4vujef2at6r0" path="res://obj/fx/ditherer.tscn" id="10_8m4j2"]
 [ext_resource type="AudioStream" uid="uid://gumhapkfijcj" path="res://audio/sfx/squelch.wav" id="12_c3n6a"]
+[ext_resource type="AudioStream" uid="uid://f7tme0wfrqp6" path="res://audio/sfx/happybabyshort.wav" id="13_o1ohb"]
+[ext_resource type="AudioStream" uid="uid://cva53u7hqh514" path="res://audio/sfx/cock.wav" id="14_nau2p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a324u"]
 
@@ -181,6 +183,17 @@ skeleton = NodePath("../..")
 stream = ExtResource("12_c3n6a")
 volume_db = -8.0
 pitch_scale = 1.2
+
+[node name="hpgain" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("13_o1ohb")
+pitch_scale = 0.95
+bus = &"SFX"
+
+[node name="cock" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("14_nau2p")
+volume_db = -2.0
+pitch_scale = 1.2
+bus = &"SFX"
 
 [connection signal="HPchanged" from="Components/HealthComponent" to="CanvasLayer/PlayerHUD" method="_on_health_component_h_pchanged"]
 [connection signal="died" from="Components/HealthComponent" to="." method="_on_health_component_died"]

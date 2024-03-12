@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqxh87m5rbnai"]
+[gd_scene load_steps=18 format=3 uid="uid://bqxh87m5rbnai"]
 
 [ext_resource type="Texture2D" uid="uid://4y6mpg2rlapw" path="res://gfx/env/checkertex.png" id="1_b4d8d"]
 [ext_resource type="PackedScene" uid="uid://cij75qnj5ea15" path="res://obj/player.tscn" id="2_btpvj"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dvcpwx703fwph" path="res://obj/ent/ammo_pickup.tscn" id="8_ech4e"]
 [ext_resource type="PackedScene" uid="uid://du4imnvs066mt" path="res://obj/enemy/bellbastard.tscn" id="9_5v7to"]
 [ext_resource type="PackedScene" uid="uid://bjglo8snhme01" path="res://obj/ent/enemy_spawner.tscn" id="9_wryf7"]
+[ext_resource type="PackedScene" uid="uid://csphrtb0f58lp" path="res://obj/ent/hp_pickup.tscn" id="10_n51lh"]
+[ext_resource type="PackedScene" uid="uid://bp3j1w3ke44q2" path="res://obj/ent/dresser.tscn" id="11_nlk8l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqqdg"]
 albedo_texture = ExtResource("1_b4d8d")
@@ -18,7 +20,7 @@ uv1_triplanar = true
 noise_type = 0
 frequency = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rarw3"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c08uq"]
 width = 256
 height = 256
 seamless = true
@@ -28,18 +30,18 @@ noise = SubResource("FastNoiseLite_10c44")
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ov1n7"]
 sky_top_color = Color(1, 0, 0, 1)
 sky_horizon_color = Color(0, 0, 0, 1)
-sky_cover = SubResource("NoiseTexture2D_rarw3")
+sky_cover = SubResource("NoiseTexture2D_c08uq")
 sky_cover_modulate = Color(0.568627, 0.482353, 0.207843, 1)
 ground_bottom_color = Color(0.196078, 0.141176, 0.101961, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 ground_curve = 0.211121
 
-[sub_resource type="Sky" id="Sky_wnnvl"]
+[sub_resource type="Sky" id="Sky_aewrv"]
 sky_material = SubResource("ProceduralSkyMaterial_ov1n7")
 
 [sub_resource type="Environment" id="Environment_quj7e"]
 background_mode = 2
-sky = SubResource("Sky_wnnvl")
+sky = SubResource("Sky_aewrv")
 ambient_light_source = 3
 ambient_light_color = Color(0.415686, 0.0980392, 0.101961, 1)
 reflected_light_source = 2
@@ -120,3 +122,9 @@ enemy = ExtResource("9_5v7to")
 [node name="EnemySpawner7" parent="." instance=ExtResource("9_wryf7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.41257, 0, 14.0341)
 enemy = ExtResource("9_5v7to")
+
+[node name="AmmoPickup2" parent="." instance=ExtResource("10_n51lh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.4152, 0, -5.33872)
+
+[node name="Dresser" parent="." instance=ExtResource("11_nlk8l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.0767, 0, -12.4872)

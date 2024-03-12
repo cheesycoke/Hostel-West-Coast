@@ -67,7 +67,7 @@ _data = {
 "bobspin": SubResource("Animation_ivsi0")
 }
 
-[node name="WeaponPickup" type="Area3D"]
+[node name="WeaponPickup" type="Area3D" groups=["levelEnts"]]
 collision_mask = 16
 script = ExtResource("1_4di18")
 

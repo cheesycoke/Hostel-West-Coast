@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://df3ue6m16uq5v"]
+[gd_scene load_steps=8 format=3 uid="uid://df3ue6m16uq5v"]
 
 [ext_resource type="Script" path="res://scn/menus/intro.gd" id="1_0hf51"]
 [ext_resource type="Texture2D" uid="uid://cj3erq2oso0sf" path="res://gfx/ui/intro/intro.png" id="1_v1ryx"]
 [ext_resource type="Texture2D" uid="uid://qagnkyqs05pb" path="res://gfx/ui/intro/introches.png" id="2_xojw2"]
+[ext_resource type="Texture2D" uid="uid://cih6k642dlfg3" path="res://gfx/ui/intro/jam.png" id="4_k7dbe"]
 
 [sub_resource type="Animation" id="Animation_5pq10"]
 length = 0.001
@@ -17,6 +18,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jam:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_v03c7"]
@@ -33,6 +46,32 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 0), Vector2(-1920, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jam:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5, 5.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.403922, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"introEnd"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1iwng"]
@@ -64,3 +103,9 @@ offset = Vector2(213.556, 120)
 libraries = {
 "": SubResource("AnimationLibrary_1iwng")
 }
+
+[node name="Jam" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(960, 540)
+scale = Vector2(4.49649, 4.5)
+texture = ExtResource("4_k7dbe")

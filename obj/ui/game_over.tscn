@@ -164,3 +164,13 @@ libraries = {
 "": SubResource("AnimationLibrary_nvbdy")
 }
 speed_scale = 1.5
+
+[node name="RETRY" type="Button" parent="."]
+layout_mode = 0
+offset_left = 816.0
+offset_top = 680.0
+offset_right = 1112.0
+offset_bottom = 840.0
+text = "RETRY"
+
+[connection signal="pressed" from="RETRY" to="." method="_on_retry_pressed"]

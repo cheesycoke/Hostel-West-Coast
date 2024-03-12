@@ -1,4 +1,4 @@
-extends CSGBox3D
+extends Node3D
 signal opened
 @onready var the_door = $TheDoor
 
@@ -9,7 +9,7 @@ func _process(delta):
 	pass
 
 func punched():
-	print("doorhit!")
+	$AudioStreamPlayer.play(0.11)
 	emit_signal("opened")
 	the_door.queue_free()
 	

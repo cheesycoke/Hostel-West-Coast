@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://c81nrdbcoplet"]
+
+[ext_resource type="FontFile" uid="uid://dxt52v0stfdxp" path="res://gfx/font/veteran typewriter.ttf" id="1_jpal1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxhpp"]
+albedo_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qhjco"]
+material = SubResource("StandardMaterial3D_pxhpp")
+size = Vector3(3, 20, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6s16"]
+size = Vector3(3, 20, 3)
+
+[node name="EVILATOR" type="StaticBody3D" groups=["levelEnts"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qhjco")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_p6s16")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.972976, 1.52399)
+no_depth_test = true
+text = "HOLD UP ASSHOLE
+YOU STILL GOTTA KILL
+3
+GUYS"
+font = ExtResource("1_jpal1")
+font_size = 87

@@ -18,7 +18,7 @@ const decel: float = 0.8
 
 var focusgun = null
 
-const gravity = 200
+const gravity = 2
 var canpunch:bool = true
 var dead:bool = false
 
@@ -32,7 +32,9 @@ func _physics_process(delta):
 	
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
+	
+	if Input.is_action_just_pressed("kill"):
+		hurt(50)
 	var input_dir = Input.get_vector("back", "fwd", "left", "right")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if dead == false:
@@ -97,3 +99,10 @@ func _on_health_component_died():
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	dead = true
 	gameover.showGameOver()
+
+func hpGain():
+	$SFX/hpgain.play(0.0)
+	hud.animateSeer("smile")
+
+func ammoGain():
+	$SFX/cock.play(0.32)

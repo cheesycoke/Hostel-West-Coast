@@ -76,7 +76,7 @@ _data = {
 "hop": SubResource("Animation_jsdg1")
 }
 
-[node name="AmmoPickup" type="Area3D"]
+[node name="AmmoPickup" type="Area3D" groups=["levelEnts"]]
 collision_layer = 0
 collision_mask = 16
 script = ExtResource("1_cxcn3")

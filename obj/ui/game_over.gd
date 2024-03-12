@@ -12,3 +12,7 @@ func showGameOver():
 	$AnimationPlayer.play("die")
 	$sfx/ekg.play()
 	$sfx/splort.play(0.02)
+
+
+func _on_retry_pressed():
+	GameLogic.restartEverything()

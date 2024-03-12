@@ -1,0 +1,119 @@
+[gd_scene load_steps=10 format=3 uid="uid://be3oyulofrtjg"]
+
+[ext_resource type="PackedScene" uid="uid://b4yjx1jjbtnan" path="res://gfx/env/walls.glb" id="1_m8l5n"]
+[ext_resource type="Script" path="res://obj/sys/roomGen/room_walls.gd" id="2_cvj2t"]
+[ext_resource type="Material" uid="uid://cjxf42w0ughv8" path="res://gfx/env/mat/walls.tres" id="2_kwmbl"]
+[ext_resource type="PackedScene" uid="uid://bxnqkp5kooko2" path="res://obj/ent/door.tscn" id="3_jyiko"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ybhw"]
+size = Vector3(0.4, 3, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoouu"]
+emission_enabled = true
+emission = Color(0.603922, 0.603922, 0.603922, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jbo8y"]
+material = SubResource("StandardMaterial3D_hoouu")
+size = Vector3(2, 0.25, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vys53"]
+size = Vector3(2, 0.33, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vheii"]
+size = Vector3(2, 0.366, 2)
+
+[node name="walls" instance=ExtResource("1_m8l5n")]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
+script = ExtResource("2_cvj2t")
+
+[node name="wallLeft" parent="." index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wallLeft" index="0"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallLeft/StaticBody3D" index="0"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.16679e-09, 1.5, 0.8)
+shape = SubResource("BoxShape3D_8ybhw")
+
+[node name="wallUp" parent="." index="1"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wallUp" index="0"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallUp/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 1.5, 3.49691e-08)
+shape = SubResource("BoxShape3D_8ybhw")
+
+[node name="wallRight" parent="." index="2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wallRight" index="0"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallRight/StaticBody3D" index="0"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.46355e-08, 1.5, -0.8)
+shape = SubResource("BoxShape3D_8ybhw")
+
+[node name="wallDown" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="wallDown" index="0"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wallDown/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 1.5, 8.42402e-08)
+shape = SubResource("BoxShape3D_8ybhw")
+
+[node name="doorLeft" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="Door" parent="doorLeft" index="0" instance=ExtResource("3_jyiko")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.49691e-08, 1.5, 0.8)
+
+[node name="doorUp" parent="." index="5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="Door" parent="doorUp" index="0" instance=ExtResource("3_jyiko")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.8, 1.5, 4.98703e-08)
+
+[node name="doorRight" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="Door" parent="doorRight" index="0" instance=ExtResource("3_jyiko")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.49691e-08, 1.5, -0.8)
+
+[node name="doorDown" parent="." index="7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+surface_material_override/0 = ExtResource("2_kwmbl")
+
+[node name="Door" parent="doorDown" index="0" instance=ExtResource("3_jyiko")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.8, 1.5, -2.0068e-08)
+
+[node name="ceiling" type="MeshInstance3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+mesh = SubResource("BoxMesh_jbo8y")
+
+[node name="floor" type="MeshInstance3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+mesh = SubResource("BoxMesh_vys53")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="floor" index="0"]
+collision_layer = 7
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0170532, 0)
+shape = SubResource("BoxShape3D_vheii")

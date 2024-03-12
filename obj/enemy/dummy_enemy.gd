@@ -19,6 +19,7 @@ func _ready():
 	initTracker()
 
 func _physics_process(delta):
+	global_position.y = 2.3
 	move_and_slide()
 
 func initHealth():
@@ -47,6 +48,8 @@ func drop():
 	var roll = randi_range(0,10)
 	if roll < 6:
 		pass
+	elif roll < 7:
+		GameLogic.dropHealth(global_position)
 	elif roll < 9:
 		GameLogic.dropAmmo(global_position)
 	else:

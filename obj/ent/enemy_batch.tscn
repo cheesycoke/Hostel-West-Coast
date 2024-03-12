@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk5uwkacx1j7f"]
+
+[ext_resource type="Script" path="res://obj/ent/enemy_batch.gd" id="1_oao1y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hm5eo"]
+radius = 1.0
+
+[node name="EnemyBatch" type="Node3D" groups=["levelEnts"]]
+script = ExtResource("1_oao1y")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_hm5eo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

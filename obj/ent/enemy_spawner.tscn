@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjglo8snhme01"]
+[gd_scene load_steps=5 format=3 uid="uid://bjglo8snhme01"]
 
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="1_ghvn7"]
 [ext_resource type="Script" path="res://obj/ent/EDITORSHIT.gd" id="2_ceby2"]
@@ -8,6 +8,9 @@ radius = 0.25
 height = 0.6
 radial_segments = 8
 rings = 4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7bhqo"]
+radius = 0.2
 
 [node name="EnemySpawner" type="Node3D" groups=["enemyspawner"]]
 script = ExtResource("1_ghvn7")
@@ -23,3 +26,11 @@ text = "NO ENEMY"
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EDITORSHIT"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 mesh = SubResource("SphereMesh_dlaf3")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_7bhqo")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

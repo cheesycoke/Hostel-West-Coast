@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://c51c1jnkalfy5"]
+
+[ext_resource type="PackedScene" uid="uid://bycud44a7gwfp" path="res://obj/sys/roomGen/generator.tscn" id="1_u8v4y"]
+[ext_resource type="Script" path="res://scn/game_scene1.gd" id="1_wwk8e"]
+[ext_resource type="PackedScene" uid="uid://caliars4o7t27" path="res://obj/player_spawner.tscn" id="3_8pf66"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oyhka"]
+noise_type = 0
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rarw3"]
+width = 256
+height = 256
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_oyhka")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jbr5d"]
+sky_top_color = Color(1, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+sky_cover = SubResource("NoiseTexture2D_rarw3")
+sky_cover_modulate = Color(0.568627, 0.482353, 0.207843, 1)
+ground_bottom_color = Color(0.196078, 0.141176, 0.101961, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+ground_curve = 0.211121
+
+[sub_resource type="Sky" id="Sky_wnnvl"]
+sky_material = SubResource("ProceduralSkyMaterial_jbr5d")
+
+[sub_resource type="Environment" id="Environment_y0kn2"]
+background_mode = 2
+sky = SubResource("Sky_wnnvl")
+ambient_light_source = 3
+ambient_light_color = Color(0.572549, 0.14902, 0.156863, 1)
+reflected_light_source = 2
+fog_light_color = Color(0, 0, 0, 1)
+fog_density = 0.1273
+fog_aerial_perspective = 1.0
+adjustment_contrast = 8.0
+
+[node name="GameScene" type="Node3D"]
+script = ExtResource("1_wwk8e")
+
+[node name="Generator" parent="." instance=ExtResource("1_u8v4y")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.92122, 0)
+light_color = Color(0.945098, 0.913725, 0.847059, 1)
+light_energy = 1.8
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_y0kn2")
+
+[node name="PlayerSpawner" parent="." instance=ExtResource("3_8pf66")]

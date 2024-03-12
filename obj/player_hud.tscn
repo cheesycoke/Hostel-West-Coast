@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://veta8uxb1o2r"]
+[gd_scene load_steps=37 format=3 uid="uid://veta8uxb1o2r"]
 
 [ext_resource type="FontFile" uid="uid://bc3hjc3jxmrmj" path="res://gfx/font/HopeGold.otf" id="1_he0xc"]
 [ext_resource type="Script" path="res://obj/player_hud.gd" id="1_rfuw2"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://obj/Debug.gd" id="8_w0kj3"]
 [ext_resource type="Texture2D" uid="uid://b3gaciitgnkd1" path="res://gfx/ui/thought.png" id="9_5hc5l"]
 [ext_resource type="Texture2D" uid="uid://bk58nacamedt1" path="res://gfx/ui/seerCorner.png" id="9_h7m3o"]
+[ext_resource type="Texture2D" uid="uid://ccbcqynfcrvtu" path="res://gfx/ui/splart.png" id="9_t3bpn"]
 [ext_resource type="Script" path="res://obj/Seer.gd" id="10_3uhf7"]
 [ext_resource type="PackedScene" uid="uid://qew3ef1rctj4" path="res://obj/ui/ammocounter.tscn" id="12_7cv7d"]
 [ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="13_ehbb5"]
@@ -295,6 +296,12 @@ anchor_bottom = 1.0
 offset_top = -400.0
 offset_right = 736.0
 grow_vertical = 0
+
+[node name="Splart" type="Sprite2D" parent="BottomLeft"]
+position = Vector2(0, 400)
+scale = Vector2(2.28125, 2.44966)
+texture = ExtResource("9_t3bpn")
+offset = Vector2(126.247, -87.3591)
 
 [node name="Thought" type="AnimatedSprite2D" parent="BottomLeft"]
 position = Vector2(184, 72)

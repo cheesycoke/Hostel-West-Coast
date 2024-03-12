@@ -1,6 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cupgbeno72bei"]
+[gd_scene load_steps=4 format=3 uid="uid://cupgbeno72bei"]
 
 [ext_resource type="Script" path="res://game_logic.gd" id="1_qhaic"]
+[ext_resource type="Script" path="res://Music.gd" id="2_f6xjg"]
+[ext_resource type="AudioStream" uid="uid://caoensashc1m2" path="res://audio/music/goofing.mp3" id="3_i187t"]
 
 [node name="GameLogic" type="Node"]
 script = ExtResource("1_qhaic")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Music" type="Node" parent="."]
+script = ExtResource("2_f6xjg")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("3_i187t")
+volume_db = -8.0
+autoplay = true
+bus = &"Music"
