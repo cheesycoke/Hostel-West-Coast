@@ -1,22 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://be3oyulofrtjg"]
+[gd_scene load_steps=13 format=3 uid="uid://be3oyulofrtjg"]
 
 [ext_resource type="PackedScene" uid="uid://b4yjx1jjbtnan" path="res://gfx/env/walls.glb" id="1_m8l5n"]
 [ext_resource type="Script" path="res://obj/sys/roomGen/room_walls.gd" id="2_cvj2t"]
 [ext_resource type="Material" uid="uid://cjxf42w0ughv8" path="res://gfx/env/mat/walls.tres" id="2_kwmbl"]
 [ext_resource type="PackedScene" uid="uid://bxnqkp5kooko2" path="res://obj/ent/door.tscn" id="3_jyiko"]
+[ext_resource type="Texture2D" uid="uid://ctklysbiern4m" path="res://gfx/env/tex/ceiling.png" id="5_bbrcp"]
+[ext_resource type="Texture2D" uid="uid://d875o2s0u08m" path="res://gfx/env/tex/carpet.png" id="5_v07sv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8ybhw"]
 size = Vector3(0.4, 3, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hoouu"]
+albedo_texture = ExtResource("5_bbrcp")
 emission_enabled = true
-emission = Color(0.603922, 0.603922, 0.603922, 1)
+emission_energy_multiplier = 0.05
+emission_texture = ExtResource("5_bbrcp")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_jbo8y"]
 material = SubResource("StandardMaterial3D_hoouu")
 size = Vector3(2, 0.25, 2)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6r06s"]
+albedo_color = Color(1, 0.760784, 0.701961, 1)
+albedo_texture = ExtResource("5_v07sv")
+uv1_triplanar = true
+
 [sub_resource type="BoxMesh" id="BoxMesh_vys53"]
+material = SubResource("StandardMaterial3D_6r06s")
 size = Vector3(2, 0.33, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vheii"]
@@ -104,6 +115,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.8, 1
 
 [node name="ceiling" type="MeshInstance3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+layers = 16
 mesh = SubResource("BoxMesh_jbo8y")
 
 [node name="floor" type="MeshInstance3D" parent="." index="9"]

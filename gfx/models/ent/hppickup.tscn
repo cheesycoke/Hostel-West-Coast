@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://br5obr7uarjke"]
+
+[ext_resource type="PackedScene" uid="uid://skmu1ss55xlp" path="res://gfx/models/ent/hppickup.glb" id="1_bqr3k"]
+[ext_resource type="Texture2D" uid="uid://dwgbl3gojvvcn" path="res://gfx/models/ent/hppickup.png" id="2_yk1ip"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqshv"]
+albedo_texture = ExtResource("2_yk1ip")
+emission_enabled = true
+emission_texture = ExtResource("2_yk1ip")
+texture_filter = 0
+
+[node name="hppickup" instance=ExtResource("1_bqr3k")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_iqshv")

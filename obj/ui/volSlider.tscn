@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://kwjsnb6mbl50"]
+
+[ext_resource type="Texture2D" uid="uid://bginnq1yecfg4" path="res://gfx/ui/slidergrabber.png" id="1_j0wo2"]
+[ext_resource type="Script" path="res://obj/ui/volSlider.gd" id="2_7ra8s"]
+[ext_resource type="FontFile" uid="uid://dxt52v0stfdxp" path="res://gfx/font/veteran typewriter.ttf" id="3_bfnoq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oiw8w"]
+bg_color = Color(0, 0, 0, 1)
+skew = Vector2(2.165, 0.005)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+expand_margin_top = 10.0
+expand_margin_bottom = 4.0
+shadow_color = Color(1, 1, 1, 1)
+shadow_size = 1
+shadow_offset = Vector2(0, 4)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j48vg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_w2wpa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lbdfp"]
+font = ExtResource("3_bfnoq")
+font_size = 56
+outline_size = 16
+outline_color = Color(0, 0, 0, 1)
+
+[node name="MasterVol" type="HSlider"]
+offset_right = 1040.0
+offset_bottom = 64.0
+theme_override_icons/grabber = ExtResource("1_j0wo2")
+theme_override_icons/grabber_highlight = ExtResource("1_j0wo2")
+theme_override_icons/grabber_disabled = ExtResource("1_j0wo2")
+theme_override_styles/slider = SubResource("StyleBoxFlat_oiw8w")
+theme_override_styles/grabber_area = SubResource("StyleBoxEmpty_j48vg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxEmpty_w2wpa")
+max_value = 1.0
+step = 0.05
+script = ExtResource("2_7ra8s")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = -72.0
+offset_right = 1024.0
+text = "MASTER VOLUME"
+label_settings = SubResource("LabelSettings_lbdfp")
+vertical_alignment = 2

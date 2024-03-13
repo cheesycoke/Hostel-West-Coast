@@ -1,18 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://csphrtb0f58lp"]
+[gd_scene load_steps=7 format=3 uid="uid://csphrtb0f58lp"]
 
 [ext_resource type="Script" path="res://obj/ent/hp_pickup.gd" id="1_4kjqd"]
+[ext_resource type="PackedScene" uid="uid://br5obr7uarjke" path="res://gfx/models/ent/hppickup.tscn" id="2_xbfa5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n4ceq"]
 radius = 2.5
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q77sn"]
-albedo_color = Color(0.941176, 0.572549, 0.141176, 1)
-emission_enabled = true
-emission = Color(0.72549, 0.509804, 0.121569, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_vr7oi"]
-material = SubResource("StandardMaterial3D_q77sn")
-size = Vector3(0.75, 0.5, 0.5)
 
 [sub_resource type="Animation" id="Animation_w0v8v"]
 length = 0.001
@@ -84,18 +76,19 @@ script = ExtResource("1_4kjqd")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_n4ceq")
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="jump" type="Timer" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
-mesh = SubResource("BoxMesh_vr7oi")
+[node name="ScaleLarge" type="Node3D" parent="."]
 
-[node name="anim" type="AnimationPlayer" parent="Mesh"]
+[node name="Mesh" type="Node3D" parent="ScaleLarge"]
+
+[node name="hppickup" parent="ScaleLarge/Mesh" instance=ExtResource("2_xbfa5")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="anim" type="AnimationPlayer" parent="ScaleLarge/Mesh"]
 libraries = {
 "": SubResource("AnimationLibrary_o3smx")
 }
-
-[node name="jump" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="jump" to="." method="_on_jump_timeout"]

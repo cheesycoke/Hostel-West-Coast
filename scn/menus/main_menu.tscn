@@ -174,24 +174,27 @@ grow_vertical = 2
 [node name="PLAY" parent="Buttons" instance=ExtResource("4_act5y")]
 layout_mode = 0
 offset_left = 736.0
-offset_top = 760.0
+offset_top = 728.0
 offset_right = 1184.0
-offset_bottom = 858.0
+offset_bottom = 826.0
 
 [node name="OPTIONS" parent="Buttons" instance=ExtResource("4_act5y")]
 layout_mode = 0
 offset_left = 232.0
-offset_top = 760.0
+offset_top = 848.0
 offset_right = 680.0
-offset_bottom = 858.0
+offset_bottom = 946.0
+rotation = -0.261799
 text = "OPTIONS"
 
 [node name="INFO" parent="Buttons" instance=ExtResource("4_act5y")]
 layout_mode = 0
 offset_left = 1240.0
-offset_top = 760.0
+offset_top = 848.0
 offset_right = 1688.0
-offset_bottom = 858.0
+offset_bottom = 946.0
+rotation = 0.261799
+pivot_offset = Vector2(448, 0)
 text = "INFO"
 
 [node name="QUIT" parent="Buttons" instance=ExtResource("4_act5y")]
@@ -200,10 +203,15 @@ offset_left = 736.0
 offset_top = 888.0
 offset_right = 1184.0
 offset_bottom = 986.0
-text = "QUIT
-"
+text = "EXIT"
+text_overrun_behavior = 3
 
 [node name="Logo" type="Sprite2D" parent="."]
 position = Vector2(960, 308)
 scale = Vector2(1.63333, 1.63333)
 texture = ExtResource("5_dpfg3")
+
+[connection signal="pressed" from="Buttons/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Buttons/OPTIONS" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Buttons/INFO" to="." method="_on_info_pressed"]
+[connection signal="pressed" from="Buttons/QUIT" to="." method="_on_quit_pressed"]

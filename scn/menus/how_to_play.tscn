@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://c1tjhrupqyobj"]
+
+[ext_resource type="Texture2D" uid="uid://d0pdoavygt71g" path="res://gfx/ui/controls.png" id="1_drkmg"]
+[ext_resource type="Script" path="res://scn/menus/how_to_play.gd" id="1_oq6wl"]
+[ext_resource type="PackedScene" uid="uid://cues6qf400lul" path="res://obj/ui/mainmenu/mainmenubutton.tscn" id="2_p4nhl"]
+[ext_resource type="FontFile" uid="uid://dxt52v0stfdxp" path="res://gfx/font/veteran typewriter.ttf" id="4_e8ugv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vwmto"]
+font = ExtResource("4_e8ugv")
+font_size = 76
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oq6wl")
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("1_drkmg")
+metadata/_edit_lock_ = true
+
+[node name="Button" parent="." instance=ExtResource("2_p4nhl")]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 928.0
+offset_right = 512.0
+offset_bottom = 1026.0
+text = "BACK"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 112.0
+offset_right = 360.0
+offset_bottom = 200.0
+text = "MOVE"
+label_settings = SubResource("LabelSettings_vwmto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 112.0
+offset_right = 848.0
+offset_bottom = 200.0
+text = "USE"
+label_settings = SubResource("LabelSettings_vwmto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1136.0
+offset_top = 112.0
+offset_right = 1352.0
+offset_bottom = 200.0
+text = "FIRE"
+label_settings = SubResource("LabelSettings_vwmto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1528.0
+offset_top = 112.0
+offset_right = 1754.0
+offset_bottom = 200.0
+text = "MELEE"
+label_settings = SubResource("LabelSettings_vwmto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 936.0
+offset_top = 864.0
+offset_right = 1489.0
+offset_bottom = 952.0
+text = "CHANGE WEAPON"
+label_settings = SubResource("LabelSettings_vwmto")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

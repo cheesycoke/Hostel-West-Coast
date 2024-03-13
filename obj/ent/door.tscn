@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bxnqkp5kooko2"]
+[gd_scene load_steps=8 format=3 uid="uid://bxnqkp5kooko2"]
 
 [ext_resource type="Script" path="res://obj/ent/door.gd" id="1_f55vc"]
 [ext_resource type="AudioStream" uid="uid://cau4ortbaqq4o" path="res://audio/sfx/doorbreak.wav" id="2_atlis"]
+[ext_resource type="Texture2D" uid="uid://duw5rv53du8k5" path="res://gfx/env/tex/door.png" id="2_shpip"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nhg1f"]
 
@@ -9,7 +10,11 @@
 size = Vector3(0.5, 3, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hsxt"]
-albedo_color = Color(0.305882, 0.192157, 0.133333, 1)
+albedo_texture = ExtResource("2_shpip")
+emission_enabled = true
+emission_texture = ExtResource("2_shpip")
+uv1_offset = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_mei8d"]
 material = SubResource("StandardMaterial3D_0hsxt")

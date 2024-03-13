@@ -1,6 +1,113 @@
-[gd_scene load_steps=2 format=3 uid="uid://dk20jrjpes3w0"]
+[gd_scene load_steps=21 format=3 uid="uid://dk20jrjpes3w0"]
 
 [ext_resource type="Texture2D" uid="uid://duwbamghsqucp" path="res://gfx/ui/menuBGs/settings menu bg.png" id="1_fxcov"]
+[ext_resource type="Script" path="res://scn/menus/settings.gd" id="1_gno2n"]
+[ext_resource type="PackedScene" uid="uid://cues6qf400lul" path="res://obj/ui/mainmenu/mainmenubutton.tscn" id="2_ighaa"]
+[ext_resource type="PackedScene" uid="uid://kwjsnb6mbl50" path="res://obj/ui/volSlider.tscn" id="4_5rjha"]
+[ext_resource type="AudioStream" uid="uid://bklt160fdudni" path="res://audio/sfx/splort_1.mp3" id="5_rif6a"]
+[ext_resource type="FontFile" uid="uid://dxt52v0stfdxp" path="res://gfx/font/veteran typewriter.ttf" id="6_2jnt6"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_kvsha"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_8asbg"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_8uqdd"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_m4j6h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_42ykp"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y8aw5"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydeja"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_iuxv8"]
+default_font_size = 36
+PopupMenu/colors/font_accelerator_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_color = Color(1, 1, 1, 1)
+PopupMenu/colors/font_disabled_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_hover_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_outline_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_separator_color = Color(0, 0, 0, 1)
+PopupMenu/colors/font_separator_outline_color = Color(0, 0, 0, 1)
+PopupMenu/constants/h_separation = 0
+PopupMenu/constants/icon_max_width = 0
+PopupMenu/constants/indent = 0
+PopupMenu/constants/item_end_padding = 0
+PopupMenu/constants/item_start_padding = 0
+PopupMenu/constants/outline_size = 0
+PopupMenu/constants/separator_outline_size = 0
+PopupMenu/constants/v_separation = 0
+PopupMenu/font_sizes/font_separator_size = 36
+PopupMenu/font_sizes/font_size = 36
+PopupMenu/fonts/font = ExtResource("6_2jnt6")
+PopupMenu/fonts/font_separator = null
+PopupMenu/icons/checked = null
+PopupMenu/icons/checked_disabled = null
+PopupMenu/icons/radio_checked = SubResource("ImageTexture_kvsha")
+PopupMenu/icons/radio_checked_disabled = SubResource("ImageTexture_8asbg")
+PopupMenu/icons/radio_unchecked = SubResource("ImageTexture_8uqdd")
+PopupMenu/icons/radio_unchecked_disabled = SubResource("ImageTexture_m4j6h")
+PopupMenu/icons/submenu = null
+PopupMenu/icons/submenu_mirrored = null
+PopupMenu/icons/unchecked = null
+PopupMenu/icons/unchecked_disabled = null
+PopupMenu/styles/hover = SubResource("StyleBoxFlat_42ykp")
+PopupMenu/styles/labeled_separator_left = null
+PopupMenu/styles/labeled_separator_right = null
+PopupMenu/styles/panel = SubResource("StyleBoxFlat_y8aw5")
+PopupMenu/styles/separator = null
+PopupPanel/styles/panel = SubResource("StyleBoxFlat_ydeja")
+
+[sub_resource type="ImageTexture" id="ImageTexture_8j3r6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7fj7s"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 16
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aglpe"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 16
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yawc0"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 16
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hfspw"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 8
+border_width_right = 4
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gqu3j"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 16
+border_color = Color(1, 1, 1, 1)
+anti_aliasing = false
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -9,9 +116,84 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gno2n")
+metadata/_edit_lock_ = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("1_fxcov")
+metadata/_edit_lock_ = true
+
+[node name="Back" parent="." instance=ExtResource("2_ighaa")]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 64.0
+offset_right = 504.0
+offset_bottom = 162.0
+text = "BACK"
+
+[node name="MasterVol" parent="." instance=ExtResource("4_5rjha")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 320.0
+offset_right = 1168.0
+offset_bottom = 384.0
+slidername = "MASTER VOLUME"
+
+[node name="MusicVol" parent="." instance=ExtResource("4_5rjha")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 568.0
+offset_right = 1168.0
+offset_bottom = 632.0
+slidername = "MUSIC VOLUME"
+
+[node name="SFXVol" parent="." instance=ExtResource("4_5rjha")]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 832.0
+offset_right = 1168.0
+offset_bottom = 896.0
+slidername = "SOUND VOLUME"
+
+[node name="sfxtest" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_rif6a")
+bus = &"SFX"
+
+[node name="Resolution" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 1344.0
+offset_top = 288.0
+offset_right = 1664.0
+offset_bottom = 384.0
+theme = SubResource("Theme_iuxv8")
+theme_override_fonts/font = ExtResource("6_2jnt6")
+theme_override_font_sizes/font_size = 42
+theme_override_icons/arrow = SubResource("ImageTexture_8j3r6")
+theme_override_styles/focus = SubResource("StyleBoxFlat_7fj7s")
+theme_override_styles/normal = SubResource("StyleBoxFlat_aglpe")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yawc0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hfspw")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_gqu3j")
+alignment = 1
+item_count = 6
+popup/item_0/text = "2560x1440"
+popup/item_0/id = 5
+popup/item_1/text = "1920x1080"
+popup/item_1/id = 0
+popup/item_2/text = "1600x900"
+popup/item_2/id = 1
+popup/item_3/text = "1366x768"
+popup/item_3/id = 2
+popup/item_4/text = "1280x720"
+popup/item_4/id = 3
+popup/item_5/text = "720x480"
+popup/item_5/id = 4
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="MasterVol" to="." method="_on_master_vol_value_changed"]
+[connection signal="value_changed" from="MusicVol" to="." method="_on_music_vol_value_changed"]
+[connection signal="value_changed" from="SFXVol" to="." method="_on_sfx_vol_value_changed"]
+[connection signal="item_selected" from="Resolution" to="." method="_on_resolution_item_selected"]

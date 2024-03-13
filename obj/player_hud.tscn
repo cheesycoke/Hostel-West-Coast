@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://veta8uxb1o2r"]
+[gd_scene load_steps=40 format=3 uid="uid://veta8uxb1o2r"]
 
 [ext_resource type="FontFile" uid="uid://bc3hjc3jxmrmj" path="res://gfx/font/HopeGold.otf" id="1_he0xc"]
 [ext_resource type="Script" path="res://obj/player_hud.gd" id="1_rfuw2"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://qew3ef1rctj4" path="res://obj/ui/ammocounter.tscn" id="12_7cv7d"]
 [ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="13_ehbb5"]
 [ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="14_vq0w0"]
+[ext_resource type="FontFile" uid="uid://dxt52v0stfdxp" path="res://gfx/font/veteran typewriter.ttf" id="16_7ye3v"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_po1o5"]
 font = ExtResource("6_eqrg7")
@@ -174,6 +175,25 @@ animations = [{
 "name": &"thumbsup",
 "speed": 5.0
 }]
+
+[sub_resource type="LabelSettings" id="LabelSettings_yay64"]
+line_spacing = -40.585
+font = ExtResource("6_eqrg7")
+font_size = 176
+outline_size = 25
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 25
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 10)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5uk2k"]
+font = ExtResource("16_7ye3v")
+font_size = 41
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 12
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(0, 5)
 
 [node name="PlayerHUD" type="Control"]
 texture_filter = 1
@@ -347,5 +367,49 @@ ammotype = ExtResource("13_ehbb5")
 [node name="curshells" parent="BottomLeft/AmmoList" instance=ExtResource("12_7cv7d")]
 layout_mode = 2
 ammotype = ExtResource("14_vq0w0")
+
+[node name="TopRight" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -728.0
+offset_bottom = 392.0
+grow_horizontal = 0
+
+[node name="NumEnemies" type="Label" parent="TopRight"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 26.0
+offset_right = 648.0
+offset_bottom = 224.0
+text = "100"
+label_settings = SubResource("LabelSettings_yay64")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Remaining" type="Label" parent="TopRight/NumEnemies"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 133.0
+offset_right = 384.0
+offset_bottom = 222.0
+text = "REMAINING"
+label_settings = SubResource("LabelSettings_5uk2k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EXITOPEN" type="Label" parent="TopRight"]
+visible = false
+layout_mode = 0
+offset_left = 304.0
+offset_right = 745.0
+offset_bottom = 399.0
+scale = Vector2(0.665, 0.665)
+text = "EXIT
+OPEN"
+label_settings = SubResource("LabelSettings_yay64")
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="timeout" from="BottomLeft/Seer/animtimer" to="BottomLeft/Seer" method="_on_animtimer_timeout"]

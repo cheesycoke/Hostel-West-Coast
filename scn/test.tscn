@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cij75qnj5ea15" path="res://obj/player.tscn" id="2_btpvj"]
 [ext_resource type="PackedScene" uid="uid://dnvlu0djh6fgu" path="res://obj/ent/weapon_pickup.tscn" id="3_qe36e"]
 [ext_resource type="Resource" uid="uid://bw1m6l03mm2mh" path="res://obj/weapons/assrifle.tres" id="4_t3gni"]
-[ext_resource type="Resource" uid="uid://dwrwtwd8ppep2" path="res://obj/weapons/babygun.tres" id="5_fw2ln"]
+[ext_resource type="Resource" uid="uid://dqm86oyqxvi0i" path="res://obj/weapons/minigun.tres" id="5_c5rr8"]
 [ext_resource type="Resource" uid="uid://obrqo2w28tcs" path="res://obj/weapons/shotgun.tres" id="6_vsubm"]
 [ext_resource type="PackedScene" uid="uid://dvcpwx703fwph" path="res://obj/ent/ammo_pickup.tscn" id="8_ech4e"]
 [ext_resource type="PackedScene" uid="uid://du4imnvs066mt" path="res://obj/enemy/bellbastard.tscn" id="9_5v7to"]
@@ -82,7 +82,7 @@ weapon = ExtResource("4_t3gni")
 
 [node name="WeaponPickup2" parent="." instance=ExtResource("3_qe36e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40736, 0.0644045, 8.37448)
-weapon = ExtResource("5_fw2ln")
+weapon = ExtResource("5_c5rr8")
 
 [node name="WeaponPickup3" parent="." instance=ExtResource("3_qe36e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07966, 0, 8.2658)

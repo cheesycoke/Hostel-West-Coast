@@ -1,8 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://cupgbeno72bei"]
+[gd_scene load_steps=7 format=3 uid="uid://cupgbeno72bei"]
 
 [ext_resource type="Script" path="res://game_logic.gd" id="1_qhaic"]
 [ext_resource type="Script" path="res://Music.gd" id="2_f6xjg"]
 [ext_resource type="AudioStream" uid="uid://caoensashc1m2" path="res://audio/music/goofing.mp3" id="3_i187t"]
+
+[sub_resource type="Animation" id="Animation_mndd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("wool:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0m8ba"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("wool:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(6.27667, 6.27667, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xhtlp"]
+_data = {
+"RESET": SubResource("Animation_mndd4"),
+"fade": SubResource("Animation_0m8ba")
+}
 
 [node name="GameLogic" type="Node"]
 script = ExtResource("1_qhaic")
@@ -17,3 +53,21 @@ stream = ExtResource("3_i187t")
 volume_db = -8.0
 autoplay = true
 bus = &"Music"
+
+[node name="HUDs" type="CanvasLayer" parent="."]
+layer = 3
+
+[node name="wool" type="ColorRect" parent="HUDs"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="transitioner" type="AnimationPlayer" parent="HUDs"]
+libraries = {
+"": SubResource("AnimationLibrary_xhtlp")
+}

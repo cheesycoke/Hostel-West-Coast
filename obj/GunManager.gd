@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var weaponInv: Array[Weapon]
+const startergun = preload("res://obj/weapons/pistol.tres")
 @export var Ammos: Array[AmmoRes]
 const invsize:int = 2
 var cur:int = 0
@@ -17,6 +18,8 @@ const WEAPON_PICKUP = preload("res://obj/ent/weapon_pickup.tscn")
 var AmmoInUse:int = 0
 
 func _ready():
+	weaponInv.clear()
+	weaponInv.append(startergun)
 	for i in Ammos:
 		i.CurAmmo = int(i.MaxAmmo/2)
 	setWeapon(cur)

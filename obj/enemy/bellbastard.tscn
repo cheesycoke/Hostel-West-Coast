@@ -1,22 +1,14 @@
-[gd_scene load_steps=21 format=3 uid="uid://du4imnvs066mt"]
+[gd_scene load_steps=19 format=3 uid="uid://du4imnvs066mt"]
 
 [ext_resource type="Script" path="res://obj/enemy/bellbastard.gd" id="1_8mbdo"]
 [ext_resource type="Script" path="res://addons/imjp94.yafsm/src/StateMachinePlayer.gd" id="2_m0va5"]
+[ext_resource type="PackedScene" uid="uid://dpvrs7bo7tn57" path="res://gfx/models/enemies/bellbastard/bellbastard.tscn" id="2_x4ohp"]
 [ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/StateMachine.gd" id="3_gc8a8"]
 [ext_resource type="Script" path="res://addons/imjp94.yafsm/src/states/State.gd" id="4_5oth4"]
 [ext_resource type="Script" path="res://addons/imjp94.yafsm/src/transitions/Transition.gd" id="5_d6fak"]
 [ext_resource type="Script" path="res://addons/imjp94.yafsm/src/conditions/Condition.gd" id="6_rna8d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qxdv0"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwejl"]
-albedo_color = Color(0.392157, 0.4, 0.298039, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_33e5n"]
-material = SubResource("StandardMaterial3D_nwejl")
-
-[sub_resource type="BoxMesh" id="BoxMesh_d0laj"]
-size = Vector3(0.17, 1.13, 0.365)
 
 [sub_resource type="Resource" id="Resource_wiyla"]
 script = ExtResource("4_5oth4")
@@ -100,14 +92,8 @@ shape = SubResource("CapsuleShape3D_qxdv0")
 
 [node name="mesh" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-mesh = SubResource("CapsuleMesh_33e5n")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="mesh/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.375)
-mesh = SubResource("BoxMesh_d0laj")
+[node name="model" parent="mesh" instance=ExtResource("2_x4ohp")]
+transform = Transform3D(-1.4, 0, 2.11394e-07, 0, 1.4, 0, -2.11394e-07, 0, -1.4, 0, 0, 0)
 
 [node name="StateMachinePlayer" type="Node" parent="."]
 script = ExtResource("2_m0va5")
@@ -130,7 +116,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -0.8)
 shape = SubResource("SphereShape3D_28owg")
 
 [node name="Timer" type="Timer" parent="smackbox"]
-autostart = true
+one_shot = true
 
 [connection signal="updated" from="StateMachinePlayer" to="." method="_on_state_machine_player_updated"]
 [connection signal="timeout" from="Recover" to="." method="_on_recover_timeout"]

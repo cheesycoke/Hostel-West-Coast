@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cv0qrli5e84c"]
+
+[ext_resource type="PackedScene" uid="uid://cwlivhd1uew4r" path="res://gfx/models/ent/ammopickup.glb" id="1_3poqt"]
+[ext_resource type="Texture2D" uid="uid://cnmqu3nxbjq44" path="res://gfx/models/ent/ammopickup.png" id="2_rq0n8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fy3iv"]
+albedo_texture = ExtResource("2_rq0n8")
+emission_enabled = true
+emission_texture = ExtResource("2_rq0n8")
+texture_filter = 0
+
+[node name="ammopickup" instance=ExtResource("1_3poqt")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_fy3iv")

@@ -2,7 +2,7 @@ extends Area3D
 
 var Large:bool = false
 var largechance:int = 25
-@onready var mesh = $Mesh
+@onready var mesh = $ScaleLarge/Mesh
 var willanimate:bool = false
 
 func _ready():
@@ -10,6 +10,8 @@ func _ready():
 	$jump.start(randi_range(3,50))
 	mesh.rotate_y(randf_range(0,360))
 	Large = rollSize()
+	if Large == true:
+		$ScaleLarge.scale = Vector3(1.5,1.25,1.5)
 
 func _process(delta):
 	pass

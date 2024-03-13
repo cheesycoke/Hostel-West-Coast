@@ -1,0 +1,77 @@
+[gd_scene load_steps=6 format=3 uid="uid://b51qcaus54hbi"]
+
+[ext_resource type="FontFile" uid="uid://dxt52v0stfdxp" path="res://gfx/font/veteran typewriter.ttf" id="1_rb6da"]
+[ext_resource type="Script" path="res://scn/menus/endscreen.gd" id="1_uwxtd"]
+[ext_resource type="PackedScene" uid="uid://cues6qf400lul" path="res://obj/ui/mainmenu/mainmenubutton.tscn" id="3_lo6x2"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ul1u3"]
+font = ExtResource("1_rb6da")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_oqhh6"]
+font = ExtResource("1_rb6da")
+font_size = 32
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uwxtd")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 296.0
+offset_top = 120.0
+offset_right = 1624.0
+offset_bottom = 344.0
+text = "wait, that's all?"
+label_settings = SubResource("LabelSettings_ul1u3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 320.0
+offset_right = 1344.0
+offset_bottom = 808.0
+text = "Let's end it here, yea?
+The deadline crept up on me and this was way more ambitious than I coulda hoped to accomplish in 2 weeks. But hey, I learned a lot!
+
+Sorry about how short it is! Or, if you didn't like it, you're welcome!
+
+I'd like to do more work on it eventually though, so if you fuck with this, stay tuned.
+
+and thank you for playing!!!"
+label_settings = SubResource("LabelSettings_oqhh6")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Button" parent="." instance=ExtResource("3_lo6x2")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -242.0
+offset_bottom = -144.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

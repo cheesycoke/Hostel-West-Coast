@@ -15,6 +15,7 @@ const decel: float = 0.8
 @onready var hud = $CanvasLayer/PlayerHUD
 @onready var punchbox = $Melee/PunchBox
 @onready var gameover = $CanvasLayer/GameOver
+@onready var useray = $USEray
 
 var focusgun = null
 
@@ -61,8 +62,6 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseButton and dead == false:
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	if Input.is_action_just_pressed("esc"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if event is InputEventMouseMotion and dead == false:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 
@@ -77,6 +76,9 @@ func pickupHide():
 	focusgun = null
 
 func interact():
+	if useray.is_colliding():
+		if useray.get_collider().has_method("use"):
+			useray.get_collider().use()
 	if focusgun != null:
 		focusgun.getGrabbed()
 		gun.getWeapon(focusgun.weapon)

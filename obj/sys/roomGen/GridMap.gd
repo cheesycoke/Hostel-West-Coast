@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends GridMap
 #thank u quwatz_ for coming in clutch with the procgen tutorial
 @export var start:bool = false : set = set_start
@@ -16,8 +16,9 @@ func _ready():
 		call_deferred("newFloor")
 		
 func newFloor():
-	for i in get_tree().get_nodes_in_group("levelEnts"):
-		i.queue_free()
+	if get_tree().get_nodes_in_group("levelEnts").size() >= 0:
+		for i in get_tree().get_nodes_in_group("levelEnts"):
+			i.queue_free()
 	RoomNumber = randi_range(5,8)
 	RoomNumberAdjusted = RoomNumber
 	generate()
@@ -220,7 +221,7 @@ func lightRooms(num):
 	get_tree().get_current_scene().add_child(newlight)
 	await get_tree().process_frame
 	newlight.global_position = roomPositions[num]*4
-	newlight.global_position.y = 16
+	newlight.global_position.y = 14
 	#var roomlights = ROOM_LIGHTS.instantiate()
 	#add_child(roomlights)
 	#roomlights.position = roomPositions[num]

@@ -12,6 +12,10 @@ func _ready():
 	$BottomLeft/Thought.play("default")
 
 func _process(delta):
+	$TopRight/NumEnemies.text = str(get_tree().get_nodes_in_group("enemy").size())
+	if get_tree().get_nodes_in_group("enemy").size() == 0:
+		GameLogic.levelClear = true
+	$TopRight/EXITOPEN.visible = GameLogic.levelClear
 	ammo.text = str(curammo)
 	$BottomLeft/AmmoList/curbullets.label.text = str(bullets)
 	$BottomLeft/AmmoList/curshells.label.text = str(shells)

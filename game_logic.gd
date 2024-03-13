@@ -15,18 +15,22 @@ const BASEROOM = preload("res://obj/rooms/baseroom2.tscn")
 var stashedPlayer:Player = null
 var spawnSpot:PlayerSpawner = null
 
-var curfloor = 1
+var enemiesRemaining:int = 0
+var levelClear:bool = false
+var curfloor:int = 1
 
 func _ready():
 	pass
 
 func restartEverything():
+	levelClear = false
 	if stashedPlayer != null:
 		stashedPlayer.queue_free()
 	for i in get_children():
 		if i is Player:
 			i.queue_free()
-	call_deferred("changeLevel",true)
+	changeLevel(true)
+	
 
 #func _process(delta):
 	#if Input.is_action_just_pressed("r"):
@@ -57,9 +61,11 @@ func dropHealth(pos):
 	drop.global_position = pos
 
 func checkAllClear(pos):
+	enemiesRemaining = get_tree().get_nodes_in_group("enemy").size()
 	if get_tree().get_nodes_in_group("enemy").size() <= 1:
-		print("they're all dead!")
-		print(pos)
+		levelClear = true
+	else:
+		levelClear = false
 
 func addRoom(pos,rot):
 	var newroom = BASEROOM.instantiate()
@@ -68,6 +74,11 @@ func addRoom(pos,rot):
 	newroom.rotation_degrees.y = rot
 
 func changeLevel(reset:bool=false):
+	if curfloor == 8:
+		transition("res://scn/menus/endscreen.tscn")
+		return
+	$HUDs/transitioner.play("fade")
+	levelClear = false
 	if reset == true:
 		curfloor = 1
 		for i in get_children():
@@ -86,3 +97,17 @@ func grabChild()->Player:
 		if i is Player:
 			return i
 	return null
+
+func transition(scenepath):
+	get_tree().change_scene_to_file(scenepath)
+	$HUDs/transitioner.stop()
+	$HUDs/transitioner.play("fade")
+	
+var initializing:bool = false
+const GAME_SCENE_1 = preload("res://scn/game_scene1.tscn")
+func startGame():
+	initializing = true
+	get_tree().change_scene_to_packed(GAME_SCENE_1)
+	$HUDs/transitioner.stop()
+	$HUDs/transitioner.play("fade")
+	

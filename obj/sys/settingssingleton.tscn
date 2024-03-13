@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7kp14wbmur0a"]
+
+[ext_resource type="Script" path="res://obj/sys/settingssingleton.gd" id="1_v4ywo"]
+
+[node name="settings" type="Node"]
+script = ExtResource("1_v4ywo")
