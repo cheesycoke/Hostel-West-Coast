@@ -31,11 +31,8 @@ func _on_resolution_item_selected(index):
 			centerwindow()
 		3:
 			DisplayServer.window_set_size(Vector2i(1280,720))
-		4:
-			DisplayServer.window_set_size(Vector2i(720,480))
-		5:
-			DisplayServer.window_set_size(Vector2i(2560,1440))
 
 func centerwindow():
 	var screen = DisplayServer.screen_get_size(0)
 	get_window().position=(screen/2)-get_window().size/2
+#it don't always work! what happened to center window!!!!

@@ -178,19 +178,15 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_yawc0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_hfspw")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_gqu3j")
 alignment = 1
-item_count = 6
-popup/item_0/text = "2560x1440"
-popup/item_0/id = 5
-popup/item_1/text = "1920x1080"
-popup/item_1/id = 0
-popup/item_2/text = "1600x900"
-popup/item_2/id = 1
-popup/item_3/text = "1366x768"
-popup/item_3/id = 2
-popup/item_4/text = "1280x720"
-popup/item_4/id = 3
-popup/item_5/text = "720x480"
-popup/item_5/id = 4
+item_count = 4
+popup/item_0/text = "1920x1080"
+popup/item_0/id = 0
+popup/item_1/text = "1600x900"
+popup/item_1/id = 1
+popup/item_2/text = "1366x768"
+popup/item_2/id = 2
+popup/item_3/text = "1280x720"
+popup/item_3/id = 3
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
 [connection signal="value_changed" from="MasterVol" to="." method="_on_master_vol_value_changed"]

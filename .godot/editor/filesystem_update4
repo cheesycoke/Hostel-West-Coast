@@ -45,3 +45,4 @@ res://obj/weapons/shellspewer.tres
 res://obj/weapons/revolver.tres
 res://gfx/guns/revolver/revolver.tscn
 res://scn/menus/endscreen.tscn
+res://scn/menus/settings.gd

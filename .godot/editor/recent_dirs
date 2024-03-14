@@ -1,5 +1,7 @@
-D:/User Files/Documents/00Godot Projects
+D:/User Files/Documents/00Godot Projects/EXPORTS/HostelWestCoast1/HostelWestCoastLIN
 res://
+D:/User Files/Documents/00Godot Projects/EXPORTS/HostelWestCoast1/HostelWestCoastWIN
+D:/User Files/Documents/00Godot Projects
 res://gfx/guns/revolver
 res://gfx/guns/shellspewer
 res://gfx/models/ent
@@ -18,6 +20,3 @@ res://obj/ent
 res://scn
 res://obj/sys/roomGen
 res://gfx/guns/assaultrifle
-res://gfx/guns/dbshotgun
-res://gfx/guns/shotgun
-res://obj/ui/mainmenu
