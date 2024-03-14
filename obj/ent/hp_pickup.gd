@@ -33,4 +33,4 @@ func _on_body_entered(body):
 		queue_free()
 
 func _on_jump_timeout():
-	$Mesh/anim.play("hop")
+	$ScaleLarge/Mesh/anim.play("hop")

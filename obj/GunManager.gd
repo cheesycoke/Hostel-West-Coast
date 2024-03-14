@@ -59,11 +59,21 @@ func fire():
 		gunflash()
 		firesound.pitch_scale = randf_range(0.7,1.3)
 		firesound.play()
-		doRays(weaponInv[cur].BulletsFired)
+		if !weaponInv[cur].AmmoObj:
+			doRays(weaponInv[cur].BulletsFired)
+		else:
+			shootspecial(weaponInv[cur].AmmoObj)
 		Ammos[AmmoInUse].CurAmmo -= weaponInv[cur].AmmoUse
 		camshaker.startShakin(0.3,weaponInv[cur].BulletsFired)
 		timer.start(weaponInv[cur].ReloadTime)
 	clampAmmos()
+
+func shootspecial(obj):
+	var shot = obj.instantiate()
+	get_tree().get_current_scene().add_child(shot)
+	shot.global_position = global_position
+	if shot.has_method("apply_impulse"):
+		shot.apply_impulse(Vector3(30,5,0).rotated(Vector3.UP,global_rotation.y))
 
 func doRays(num):
 	

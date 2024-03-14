@@ -110,4 +110,18 @@ func startGame():
 	get_tree().change_scene_to_packed(GAME_SCENE_1)
 	$HUDs/transitioner.stop()
 	$HUDs/transitioner.play("fade")
-	
+
+const SHATTER = preload("res://obj/fx/shatter.tscn")
+func shatterWood(pos):
+	var woodshards = SHATTER.instantiate()
+	get_tree().current_scene.add_child(woodshards)
+	woodshards.global_position=pos
+	woodshards.restart()
+const BLOOD_SPRAY = preload("res://obj/fx/blood_spray.tscn")
+func bleed(pos):
+	$SFX/Splort.global_position=pos
+	$SFX/Splort.play(0.0)
+	var blood = BLOOD_SPRAY.instantiate()
+	get_tree().current_scene.add_child(blood)
+	blood.global_position=pos
+	blood.restart()

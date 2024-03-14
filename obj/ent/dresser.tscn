@@ -1,13 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://bp3j1w3ke44q2"]
 
 [ext_resource type="Script" path="res://obj/ent/dresser.gd" id="1_xoe8s"]
+[ext_resource type="PackedScene" uid="uid://d3cjduaqint05" path="res://gfx/models/ent/dresserMDL.tscn" id="2_c1mre"]
 [ext_resource type="AudioStream" uid="uid://cau4ortbaqq4o" path="res://audio/sfx/doorbreak.wav" id="2_her1p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rar3o"]
-size = Vector3(2, 4, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_htseg"]
-size = Vector3(1.8, 1.7, 1)
+size = Vector3(2.7, 4, 1)
 
 [node name="Dresser" type="StaticBody3D" groups=["levelEnts"]]
 collision_layer = 3
@@ -17,10 +15,11 @@ script = ExtResource("1_xoe8s")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 shape = SubResource("BoxShape3D_rar3o")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
-mesh = SubResource("BoxMesh_htseg")
+[node name="dresser" parent="." instance=ExtResource("2_c1mre")]
+transform = Transform3D(-2.20743e-08, 0, -0.505, 0, 0.505, 0, 0.505, 0, -2.20743e-08, 0, 0, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 stream = ExtResource("2_her1p")
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

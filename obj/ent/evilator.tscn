@@ -1,23 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://c81nrdbcoplet"]
+[gd_scene load_steps=6 format=3 uid="uid://c81nrdbcoplet"]
 
 [ext_resource type="Script" path="res://obj/ent/evilator.gd" id="1_ugxk1"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxhpp"]
-albedo_color = Color(0.137255, 0.137255, 0.137255, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_qhjco"]
-material = SubResource("StandardMaterial3D_pxhpp")
-size = Vector3(3, 20, 3)
+[ext_resource type="PackedScene" uid="uid://da86yup4hao82" path="res://gfx/models/ent/evilatorMDL.tscn" id="2_8ak5j"]
+[ext_resource type="Script" path="res://obj/ent/EVILDOOR.gd" id="3_ki1ev"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p6s16"]
-size = Vector3(3, 20, 3)
+size = Vector3(2.75, 20, 2.75)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4lk6e"]
+size = Vector3(2.4, 2.2, 0.7)
 
 [node name="EVILATOR" type="StaticBody3D" groups=["levelEnts"]]
-collision_layer = 4097
 script = ExtResource("1_ugxk1")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_qhjco")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_p6s16")
+
+[node name="evilator" parent="." instance=ExtResource("2_8ak5j")]
+transform = Transform3D(-0.497698, 0, 0.0479229, 0, 0.5, 0, -0.0479229, 0, -0.497698, 0, 2.2, 0)
+
+[node name="EVILDOOR" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3, -1.5)
+collision_layer = 4097
+script = ExtResource("3_ki1ev")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EVILDOOR"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.15)
+shape = SubResource("BoxShape3D_4lk6e")

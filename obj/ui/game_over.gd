@@ -13,6 +13,8 @@ func showGameOver():
 	$sfx/ekg.play()
 	$sfx/splort.play(0.02)
 
-
 func _on_retry_pressed():
 	GameLogic.restartEverything()
+
+func _on_quit_pressed():
+	GameLogic.transition("res://scn/menus/main_menu.tscn")

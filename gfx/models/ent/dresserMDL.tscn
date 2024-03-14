@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3cjduaqint05"]
+
+[ext_resource type="PackedScene" uid="uid://bmysrhvsvgpex" path="res://gfx/models/ent/dresser.glb" id="1_my1yp"]
+[ext_resource type="Texture2D" uid="uid://duw5rv53du8k5" path="res://gfx/env/tex/door.png" id="2_3a5ke"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vo3rs"]
+albedo_texture = ExtResource("2_3a5ke")
+emission_enabled = true
+emission_energy_multiplier = 1.25
+emission_texture = ExtResource("2_3a5ke")
+texture_filter = 0
+
+[node name="dresser" instance=ExtResource("1_my1yp")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_vo3rs")

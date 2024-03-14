@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://5ed20m3i57ev"]
+
+[ext_resource type="PackedScene" uid="uid://bhl7orgoq0cuv" path="res://gfx/guns/ratlauncher/ratlauncher.glb" id="1_1jrsj"]
+[ext_resource type="Material" uid="uid://hpu6hlsloobx" path="res://gfx/guns/GunMat.tres" id="2_7c44x"]
+[ext_resource type="Script" path="res://gfx/guns/pistol/gunMDL.gd" id="2_wc53y"]
+[ext_resource type="Texture2D" uid="uid://c7td78gicii4o" path="res://gfx/models/rat.png" id="3_les2x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_peo11"]
+albedo_texture = ExtResource("3_les2x")
+texture_filter = 0
+
+[node name="ratlauncher" instance=ExtResource("1_1jrsj")]
+script = ExtResource("2_wc53y")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/rotation = Quaternion(0.0730333, 0, 0, 0.99733)
+bones/0/scale = Vector3(1, 1, 1)
+bones/1/scale = Vector3(1, 1, 1)
+bones/2/rotation = Quaternion(0.623429, 0, 0, 0.78188)
+bones/2/scale = Vector3(1, 1, 1)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_7c44x")
+surface_material_override/1 = SubResource("StandardMaterial3D_peo11")

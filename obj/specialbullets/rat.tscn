@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c6n7ut3mr3do5"]
+
+[ext_resource type="Script" path="res://obj/specialbullets/rat.gd" id="1_jbhek"]
+[ext_resource type="PackedScene" uid="uid://bgagyrns34ny2" path="res://gfx/models/ratMDL.tscn" id="2_j3ltr"]
+[ext_resource type="AudioStream" uid="uid://gumhapkfijcj" path="res://audio/sfx/squelch.wav" id="3_eq5jw"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bva3d"]
+friction = 0.7
+bounce = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_867ok"]
+radius = 0.3
+
+[node name="Rat" type="RigidBody3D"]
+collision_layer = 6
+collision_mask = 6
+mass = 5.79
+physics_material_override = SubResource("PhysicsMaterial_bva3d")
+gravity_scale = 2.0
+max_contacts_reported = 4
+contact_monitor = true
+script = ExtResource("1_jbhek")
+
+[node name="mesh" type="Node3D" parent="."]
+
+[node name="rat" parent="mesh" instance=ExtResource("2_j3ltr")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0.0551796, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_867ok")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_eq5jw")
+volume_db = -5.0
+pitch_scale = 1.2
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

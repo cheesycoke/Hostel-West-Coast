@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=3 format=3 uid="uid://dk88ke4gaapua"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://dk88ke4gaapua"]
 
 [ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="1_2fvrr"]
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_bkklk"]
+[ext_resource type="AudioStream" uid="uid://v6ldn5ytxmb7" path="res://audio/sfx/bassygun.wav" id="2_yi6on"]
+[ext_resource type="PackedScene" uid="uid://bedfywijwi8fe" path="res://gfx/guns/revolver/revolver.tscn" id="3_r4ext"]
 
 [resource]
 script = ExtResource("1_bkklk")
@@ -14,3 +16,5 @@ AmmoType = ExtResource("1_2fvrr")
 FanWidth = 60
 AmmoUse = 1
 Damage = 6
+Model = ExtResource("3_r4ext")
+FireSound = ExtResource("2_yi6on")

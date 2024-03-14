@@ -13,6 +13,7 @@ func _ready():
 
 func _process(delta):
 	$TopRight/NumEnemies.text = str(get_tree().get_nodes_in_group("enemy").size())
+	$TopRight/Floor.text = "FLOOR -"+str(GameLogic.curfloor)
 	if get_tree().get_nodes_in_group("enemy").size() == 0:
 		GameLogic.levelClear = true
 	$TopRight/EXITOPEN.visible = GameLogic.levelClear

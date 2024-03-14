@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4kfs0bu0aht8"]
+
+[ext_resource type="PackedScene" uid="uid://cuj5ugealbm1j" path="res://gfx/guns/shellspewer/shellspewer.glb" id="1_tbeag"]
+[ext_resource type="Script" path="res://gfx/guns/pistol/gunMDL.gd" id="2_lxpr2"]
+[ext_resource type="Material" uid="uid://hpu6hlsloobx" path="res://gfx/guns/GunMat.tres" id="3_ig8ih"]
+
+[node name="shellspewer" instance=ExtResource("1_tbeag")]
+script = ExtResource("2_lxpr2")
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0, 0.0191112, 0.000304459)
+bones/0/rotation = Quaternion(0.428767, 1.07695e-07, 5.1113e-08, 0.903415)
+bones/1/position = Vector3(-1.90049e-07, 0.892232, 0.802221)
+bones/1/rotation = Quaternion(0.362801, -0.113448, -0.0404206, 0.924052)
+
+[node name="Cube" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("3_ig8ih")

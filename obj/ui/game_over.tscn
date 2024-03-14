@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dl3fxoxt3gftj"]
+[gd_scene load_steps=11 format=3 uid="uid://dl3fxoxt3gftj"]
 
 [ext_resource type="AudioStream" uid="uid://btj660vrqn1xo" path="res://audio/sfx/ekg.ogg" id="1_t2fd2"]
 [ext_resource type="Script" path="res://obj/ui/game_over.gd" id="1_vrhjt"]
 [ext_resource type="AudioStream" uid="uid://bklt160fdudni" path="res://audio/sfx/splort_1.mp3" id="2_25hrp"]
 [ext_resource type="FontFile" uid="uid://dugqf6qatxbyq" path="res://gfx/font/junkos typewriter.ttf" id="4_c65vk"]
 [ext_resource type="Texture2D" uid="uid://dp1aag6ico4ww" path="res://gfx/ui/menuBGs/gameoverbg.png" id="4_s60mf"]
+[ext_resource type="PackedScene" uid="uid://cues6qf400lul" path="res://obj/ui/mainmenu/mainmenubutton.tscn" id="6_jau5b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_yqyb3"]
 font = ExtResource("4_c65vk")
@@ -165,12 +166,21 @@ libraries = {
 }
 speed_scale = 1.5
 
-[node name="RETRY" type="Button" parent="."]
+[node name="RETRY" parent="." instance=ExtResource("6_jau5b")]
 layout_mode = 0
-offset_left = 816.0
-offset_top = 680.0
-offset_right = 1112.0
-offset_bottom = 840.0
+offset_left = 736.0
+offset_top = 640.0
+offset_right = 1184.0
+offset_bottom = 738.0
 text = "RETRY"
 
+[node name="QUIT" parent="." instance=ExtResource("6_jau5b")]
+layout_mode = 0
+offset_left = 736.0
+offset_top = 784.0
+offset_right = 1184.0
+offset_bottom = 882.0
+text = "QUIT"
+
 [connection signal="pressed" from="RETRY" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="QUIT" to="." method="_on_quit_pressed"]

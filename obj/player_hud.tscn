@@ -399,6 +399,17 @@ label_settings = SubResource("LabelSettings_5uk2k")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Floor" type="Label" parent="TopRight"]
+layout_mode = 0
+offset_left = 267.0
+offset_top = 208.0
+offset_right = 640.0
+offset_bottom = 297.0
+text = "FLOOR 8"
+label_settings = SubResource("LabelSettings_5uk2k")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="EXITOPEN" type="Label" parent="TopRight"]
 visible = false
 layout_mode = 0

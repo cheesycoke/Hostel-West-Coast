@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://da86yup4hao82"]
+
+[ext_resource type="PackedScene" uid="uid://bgjup0061mct2" path="res://gfx/models/ent/evilator.glb" id="1_eqer5"]
+[ext_resource type="Texture2D" uid="uid://dirpgo7etfhr1" path="res://gfx/models/ent/evilator.png" id="2_up6qe"]
+[ext_resource type="Texture2D" uid="uid://bo2dhw41cgrbu" path="res://gfx/models/ent/evilatordoor.png" id="3_jpfvh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rhpio"]
+albedo_texture = ExtResource("2_up6qe")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fqd72"]
+albedo_texture = ExtResource("3_jpfvh")
+emission_enabled = true
+emission_energy_multiplier = 0.75
+emission_texture = ExtResource("3_jpfvh")
+
+[node name="evilator" instance=ExtResource("1_eqer5")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rhpio")
+surface_material_override/1 = SubResource("StandardMaterial3D_fqd72")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.4, 3.35524)
+light_color = Color(0, 1, 0, 1)
+omni_range = 8.708

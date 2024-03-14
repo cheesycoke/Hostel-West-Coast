@@ -6,9 +6,12 @@ func hurt(dmg,pos):
 		getbroken()
 
 func getbroken():
+	$CollisionShape3D.queue_free()
+	GameLogic.shatterWood(global_position)
+	
 	broken = true
 	$AudioStreamPlayer.play(0.1)
-	$MeshInstance3D.visible = false
+	$dresser.visible = false
 	var roll = randi_range(0,10)
 	if roll < 5:
 		GameLogic.dropAmmo(global_position)
@@ -17,3 +20,5 @@ func getbroken():
 	else:
 		GameLogic.dropWeapon(global_position)
 	
+func _on_audio_stream_player_finished():
+	call_deferred("queue_free")

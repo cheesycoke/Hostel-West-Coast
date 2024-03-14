@@ -9,6 +9,7 @@ var playerSpawner:PlayerSpawner
 const ROOM_LIGHTS = preload("res://obj/fx/room_lights.tscn")
 const ENEMY_BATCH = preload("res://obj/ent/enemy_batch.tscn")
 
+
 func _ready():
 	player = generator.player
 	playerSpawner = get_tree().get_first_node_in_group("playerSpawner")
@@ -189,6 +190,8 @@ func make_room(rec):
 	var avgX:float = startpos.x + (float(width)/2)
 	var avgZ:float = startpos.z + (float(height)/2)
 	var pos:Vector3 = Vector3(avgX,0,avgZ)
+	if randi_range(1,5) <= 2:
+		addDresser(pos,height)
 	roomPositions.append(pos)
 	roomSizes.append(Vector2(width,height))
 	#if roomPositions.size() == RoomNumberAdjusted:
@@ -205,6 +208,7 @@ func roomsMade():
 	call_deferred("makeElevator")
 
 const EVILATOR = preload("res://obj/ent/evilator.tscn")
+
 func makeElevator():
 	var newelevator = EVILATOR.instantiate()
 	var exitroomnum = randi()%roomPositions.size()
@@ -213,6 +217,16 @@ func makeElevator():
 	await get_tree().process_frame
 	newelevator.position = exitroompos
 	newelevator.position.z = exitroompos.z+roomSizes[exitroomnum].y
+
+const DRESSER = preload("res://obj/ent/dresser.tscn")
+
+func addDresser(pos,height):
+	var newDresser = DRESSER.instantiate()
+	get_tree().get_current_scene().add_child(newDresser)
+	newDresser.global_position = pos*4
+	newDresser.global_position.y = 2.33
+	var modifiers = [-1,1]
+	newDresser.global_position.z += (((height-0.5)*4)/2) * modifiers.pick_random()
 
 const CEILING_LIGHT = preload("res://obj/fx/ceiling_light.tscn")
 func lightRooms(num):

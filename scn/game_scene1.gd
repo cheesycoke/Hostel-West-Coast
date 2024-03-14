@@ -7,6 +7,6 @@ func _ready():
 func gameLoaded():
 	pass
 
-func _process(delta):
-	if Input.is_action_just_pressed("r"):
-		GameLogic.changeLevel(false)
+#func _process(delta):
+	#if Input.is_action_just_pressed("r"):
+		#GameLogic.changeLevel(false)

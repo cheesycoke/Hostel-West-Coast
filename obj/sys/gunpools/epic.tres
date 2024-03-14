@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="GunList" load_steps=4 format=3 uid="uid://cyintbfeyub6u"]
+[gd_resource type="Resource" script_class="GunList" load_steps=5 format=3 uid="uid://cyintbfeyub6u"]
 
 [ext_resource type="Script" path="res://obj/sys/gunpools/GunList.gd" id="1_4gscg"]
 [ext_resource type="Resource" uid="uid://dqm86oyqxvi0i" path="res://obj/weapons/minigun.tres" id="1_yermc"]
 [ext_resource type="Resource" uid="uid://bkimjh34o0tlt" path="res://obj/weapons/shellspewer.tres" id="2_s0jw5"]
+[ext_resource type="Resource" uid="uid://cbgonffwra804" path="res://obj/weapons/ratchucker.tres" id="3_mnj7n"]
 
 [resource]
 script = ExtResource("1_4gscg")
-list = Array[Resource("res://obj/weapons/baseWeapon.gd")]([ExtResource("1_yermc"), ExtResource("2_s0jw5")])
+list = Array[Resource("res://obj/weapons/baseWeapon.gd")]([ExtResource("1_yermc"), ExtResource("2_s0jw5"), ExtResource("3_mnj7n")])

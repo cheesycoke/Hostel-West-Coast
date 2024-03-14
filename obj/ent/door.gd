@@ -9,6 +9,7 @@ func _process(delta):
 	pass
 
 func punched():
+	GameLogic.shatterWood(global_position)
 	$AudioStreamPlayer.play(0.11)
 	emit_signal("opened")
 	the_door.queue_free()

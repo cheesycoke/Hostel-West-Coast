@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cij75qnj5ea15" path="res://obj/player.tscn" id="2_btpvj"]
 [ext_resource type="PackedScene" uid="uid://dnvlu0djh6fgu" path="res://obj/ent/weapon_pickup.tscn" id="3_qe36e"]
 [ext_resource type="Resource" uid="uid://bw1m6l03mm2mh" path="res://obj/weapons/assrifle.tres" id="4_t3gni"]
-[ext_resource type="Resource" uid="uid://dqm86oyqxvi0i" path="res://obj/weapons/minigun.tres" id="5_c5rr8"]
+[ext_resource type="Resource" uid="uid://cbgonffwra804" path="res://obj/weapons/ratchucker.tres" id="5_kq7xh"]
 [ext_resource type="Resource" uid="uid://obrqo2w28tcs" path="res://obj/weapons/shotgun.tres" id="6_vsubm"]
 [ext_resource type="PackedScene" uid="uid://dvcpwx703fwph" path="res://obj/ent/ammo_pickup.tscn" id="8_ech4e"]
 [ext_resource type="PackedScene" uid="uid://du4imnvs066mt" path="res://obj/enemy/bellbastard.tscn" id="9_5v7to"]
@@ -77,15 +77,15 @@ light_energy = 1.8
 environment = SubResource("Environment_quj7e")
 
 [node name="WeaponPickup" parent="." instance=ExtResource("3_qe36e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0998029, 0, 7.61979)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57732, -2.38419e-07, 10.5315)
 weapon = ExtResource("4_t3gni")
 
 [node name="WeaponPickup2" parent="." instance=ExtResource("3_qe36e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.40736, 0.0644045, 8.37448)
-weapon = ExtResource("5_c5rr8")
+weapon = ExtResource("5_kq7xh")
 
 [node name="WeaponPickup3" parent="." instance=ExtResource("3_qe36e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.07966, 0, 8.2658)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.53048, 0, 10.0844)
 weapon = ExtResource("6_vsubm")
 
 [node name="WeaponPickup4" parent="." instance=ExtResource("3_qe36e")]

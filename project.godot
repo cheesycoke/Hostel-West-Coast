@@ -14,7 +14,8 @@ config/name="Hostel West Coast"
 run/main_scene="res://scn/menus/intro.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 boot_splash/image="res://gfx/ui/intro/intro.png"
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
@@ -26,6 +27,8 @@ Settings="*res://obj/sys/settingssingleton.tscn"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/window_width_override=1600
+window/size/window_height_override=900
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 

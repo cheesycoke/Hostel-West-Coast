@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://csedpg0nqnu3p"]
+
+[ext_resource type="Texture2D" uid="uid://duw5rv53du8k5" path="res://gfx/env/tex/door.png" id="1_rh0pa"]
+[ext_resource type="Script" path="res://obj/fx/shatter.gd" id="2_mmuei"]
+
+[sub_resource type="Curve" id="Curve_q2kar"]
+max_value = 200.0
+_data = [Vector2(0, 123.077), 0.0, -2667.25, 0, 0, Vector2(0.0731707, 0), 12.0146, 12.0146, 0, 0, Vector2(0.237805, 149.451), 17.6903, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_lhn70"]
+curve = SubResource("Curve_q2kar")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_iy5n5"]
+particle_flag_rotate_y = true
+emission_shape_offset = Vector3(0, 0.1, 0)
+emission_shape = 1
+emission_sphere_radius = 0.4
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 0.2
+initial_velocity_max = 0.2
+gravity = Vector3(0, -4, 0)
+linear_accel_min = 1.0
+linear_accel_max = 1.0
+linear_accel_curve = SubResource("CurveTexture_lhn70")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxtdm"]
+albedo_texture = ExtResource("1_rh0pa")
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_oypbn"]
+material = SubResource("StandardMaterial3D_vxtdm")
+size = Vector3(0.185, 0.375, 0.7)
+
+[node name="shatter" type="GPUParticles3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+emitting = false
+amount = 20
+lifetime = 3.0
+one_shot = true
+speed_scale = 1.75
+explosiveness = 1.0
+fixed_fps = 20
+visibility_aabb = AABB(-0.470567, -0.134895, -0.168663, 0.939181, 0.811782, 0.337325)
+process_material = SubResource("ParticleProcessMaterial_iy5n5")
+draw_pass_1 = SubResource("BoxMesh_oypbn")
+script = ExtResource("2_mmuei")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

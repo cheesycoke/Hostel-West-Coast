@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cupgbeno72bei"]
+[gd_scene load_steps=8 format=3 uid="uid://cupgbeno72bei"]
 
 [ext_resource type="Script" path="res://game_logic.gd" id="1_qhaic"]
 [ext_resource type="Script" path="res://Music.gd" id="2_f6xjg"]
 [ext_resource type="AudioStream" uid="uid://caoensashc1m2" path="res://audio/music/goofing.mp3" id="3_i187t"]
+[ext_resource type="AudioStream" uid="uid://gumhapkfijcj" path="res://audio/sfx/squelch.wav" id="4_jss31"]
 
 [sub_resource type="Animation" id="Animation_mndd4"]
 length = 0.001
@@ -71,3 +72,10 @@ color = Color(0, 0, 0, 1)
 libraries = {
 "": SubResource("AnimationLibrary_xhtlp")
 }
+
+[node name="SFX" type="Node" parent="."]
+
+[node name="Splort" type="AudioStreamPlayer3D" parent="SFX"]
+stream = ExtResource("4_jss31")
+volume_db = -7.407
+pitch_scale = 1.37
