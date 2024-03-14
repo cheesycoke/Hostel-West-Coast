@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://djvnuetl7hynd"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://djvnuetl7hynd"]
 
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_65mma"]
 [ext_resource type="Resource" uid="uid://c8bd32a3lscoh" path="res://obj/ammo/bullets.tres" id="1_120w8"]
+[ext_resource type="AudioStream" uid="uid://vrx4gb1gbbvd" path="res://audio/sfx/gun.wav" id="2_1fmeo"]
 [ext_resource type="PackedScene" uid="uid://cqk2xnd7nl2w1" path="res://gfx/guns/pistol/pistol.tscn" id="2_7i2s7"]
 
 [resource]
@@ -14,4 +15,6 @@ RandomSpread = 0.0
 AmmoType = ExtResource("1_120w8")
 FanWidth = 60
 AmmoUse = 1
+Damage = 2
 Model = ExtResource("2_7i2s7")
+FireSound = ExtResource("2_1fmeo")

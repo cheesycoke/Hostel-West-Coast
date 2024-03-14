@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=4 format=3 uid="uid://bkimjh34o0tlt"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://bkimjh34o0tlt"]
 
 [ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="1_p2at5"]
 [ext_resource type="PackedScene" uid="uid://d4kfs0bu0aht8" path="res://gfx/guns/shellspewer/shellspewer.tscn" id="2_gdx7u"]
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="2_xbi33"]
+[ext_resource type="AudioStream" uid="uid://v6ldn5ytxmb7" path="res://audio/sfx/bassygun.wav" id="2_xg0e6"]
 
 [resource]
 script = ExtResource("2_xbi33")
@@ -16,3 +17,4 @@ FanWidth = 20
 AmmoUse = 1
 Damage = 2
 Model = ExtResource("2_gdx7u")
+FireSound = ExtResource("2_xg0e6")

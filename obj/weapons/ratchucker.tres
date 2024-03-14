@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="Weapon" load_steps=5 format=3 uid="uid://cbgonffwra804"]
+[gd_resource type="Resource" script_class="Weapon" load_steps=6 format=3 uid="uid://cbgonffwra804"]
 
 [ext_resource type="Script" path="res://obj/weapons/baseWeapon.gd" id="1_eysbj"]
 [ext_resource type="PackedScene" uid="uid://c6n7ut3mr3do5" path="res://obj/specialbullets/rat.tscn" id="1_xijlu"]
 [ext_resource type="Resource" uid="uid://d34eow5ig881a" path="res://obj/ammo/shells.tres" id="2_vki53"]
+[ext_resource type="AudioStream" uid="uid://v6ldn5ytxmb7" path="res://audio/sfx/bassygun.wav" id="3_idk5w"]
 [ext_resource type="PackedScene" uid="uid://5ed20m3i57ev" path="res://gfx/guns/ratlauncher/ratlauncher.tscn" id="3_nnb64"]
 
 [resource]
@@ -18,3 +19,4 @@ FanWidth = 60
 AmmoUse = 3
 Damage = 2
 Model = ExtResource("3_nnb64")
+FireSound = ExtResource("3_idk5w")
